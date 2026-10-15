@@ -204,7 +204,8 @@ def weapon_name(lang, material, weapon_type):
     if lang == 'ru_ru':
         return '%s из %s' % (t, m)
     if lang == 'uk_ua':
-        return '%s з %s' % (t, m)
+        # «зі» before з/с/ш/щ + consonant (світанкового), «з» otherwise
+        return '%s %s %s' % (t, 'зі' if m[:1] in 'зсшщ' and m[1:2] not in 'аеєиіїоуюя' else 'з', m)
     if lang == 'de_de':
         compound = m + t if not m.endswith('metall') else m + '-' + t.capitalize()
         if weapon_type == 'heavy_crossbow':
@@ -217,6 +218,10 @@ def weapon_name(lang, material, weapon_type):
 
 # other strings: key → (en, ru, uk, de, es, pt); en from 1.12.2 where it existed
 STRINGS = {
+    # Ingot tags (EMI shows tag names); Botania names its own
+    'tag.item.c.ingots.thaumium': ('Thaumium Ingots', 'Слитки таумиума', 'Злитки тауміуму', 'Thaumiumbarren', 'Lingotes de taumio', 'Lingotes de Taumio'),
+    'tag.item.c.ingots.void_metal': ('Void Metal Ingots', 'Слитки пустотного металла', 'Злитки порожнечного металу', 'Leerenmetallbarren', 'Lingotes de metal del vacío', 'Lingotes de Metal do Vazio'),
+    'tag.item.c.ingots.dawnstone': ('Dawnstone Ingots', 'Слитки рассветного камня', 'Злитки світанкового каменю', 'Morgensteinbarren', 'Lingotes de piedra del alba', 'Lingotes de Pedra da Aurora'),
     'itemGroup.%s.arcana' % MOD: ('Spartan Weaponry Arcana', 'Спартанское вооружение: Аркана', 'Spartan Weaponry: Аркана',
                                   'Spartan Weaponry: Arcana', 'Spartan Weaponry: Arcana', 'Spartan Weaponry: Arcana'),
     'item.%s.livingwood_handle' % MOD: ('Livingwood Handle', 'Рукоять из жизнедерева', 'Руків\'я з життєдрева', 'Lebeholzgriff',

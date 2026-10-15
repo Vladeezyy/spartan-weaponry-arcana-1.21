@@ -104,7 +104,9 @@ public final class DevScene
 		at(345, mc -> { mc.setScreen(null); mc.options.hideGui = true; });
 		// First person
 		at(350, mc -> server(mc, DevScene::firstPerson));
-		at(380, mc -> { mc.options.hideGui = false; shot(mc, "first_person"); mc.options.hideGui = true; });
+		at(375, mc -> mc.options.hideGui = false);
+		at(380, mc -> shot(mc, "first_person"));
+		at(382, mc -> mc.options.hideGui = true);
 		// Server side checks
 		at(385, mc -> server(mc, DevScene::checkRegistry));
 		at(390, mc -> server(mc, DevScene::checkRecipes));
