@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "spartanweaponry:type_disabled",
+      "disabled": [
+        "boomerang"
+      ]
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/thaumium"
+      }
+    }
+  ],
+  "category": "equipment",
+  "pattern": [
+    "iww",
+    "w  ",
+    "w  "
+  ],
+  "key": {
+    "i": {
+      "tag": "c:ingots/thaumium"
+    },
+    "w": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "id": "spartanweaponryarcana:thaumium_boomerang"
+  }
+}

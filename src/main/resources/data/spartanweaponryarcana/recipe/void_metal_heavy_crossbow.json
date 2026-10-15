@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "spartanweaponry:type_disabled",
+      "disabled": [
+        "heavy_crossbow"
+      ]
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/void_metal"
+      }
+    }
+  ],
+  "category": "equipment",
+  "pattern": [
+    "bsi",
+    "sw ",
+    "i h"
+  ],
+  "key": {
+    "i": {
+      "tag": "c:ingots/void_metal"
+    },
+    "h": {
+      "item": "spartanweaponry:handle"
+    },
+    "b": {
+      "item": "minecraft:bow"
+    },
+    "s": {
+      "tag": "c:strings"
+    },
+    "w": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "id": "spartanweaponryarcana:void_metal_heavy_crossbow"
+  }
+}

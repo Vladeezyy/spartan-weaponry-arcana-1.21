@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "spartanweaponry:type_disabled",
+      "disabled": [
+        "dagger"
+      ]
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/dawnstone"
+      }
+    }
+  ],
+  "category": "equipment",
+  "pattern": [
+    "i",
+    "h"
+  ],
+  "key": {
+    "i": {
+      "tag": "c:ingots/dawnstone"
+    },
+    "h": {
+      "item": "spartanweaponry:handle"
+    }
+  },
+  "result": {
+    "id": "spartanweaponryarcana:dawnstone_dagger"
+  }
+}

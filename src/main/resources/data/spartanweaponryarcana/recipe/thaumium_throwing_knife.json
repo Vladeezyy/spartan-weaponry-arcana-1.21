@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "spartanweaponry:type_disabled",
+      "disabled": [
+        "throwing_knife"
+      ]
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/thaumium"
+      }
+    }
+  ],
+  "category": "equipment",
+  "pattern": [
+    "hi"
+  ],
+  "key": {
+    "i": {
+      "tag": "c:ingots/thaumium"
+    },
+    "h": {
+      "item": "spartanweaponry:handle"
+    }
+  },
+  "result": {
+    "id": "spartanweaponryarcana:thaumium_throwing_knife"
+  }
+}

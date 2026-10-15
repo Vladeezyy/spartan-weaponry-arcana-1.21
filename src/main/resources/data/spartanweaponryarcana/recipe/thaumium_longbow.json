@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "spartanweaponry:type_disabled",
+      "disabled": [
+        "longbow"
+      ]
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/thaumium"
+      }
+    }
+  ],
+  "category": "equipment",
+  "pattern": [
+    "hwi",
+    "w s",
+    "iss"
+  ],
+  "key": {
+    "i": {
+      "tag": "c:ingots/thaumium"
+    },
+    "h": {
+      "item": "spartanweaponry:handle"
+    },
+    "s": {
+      "tag": "c:strings"
+    },
+    "w": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "spartanweaponryarcana:thaumium_longbow"
+  }
+}
