@@ -9,6 +9,10 @@
       "text": "spartanweaponryarcana.lexicon.elementium_weaponry.text"
     },
     {
+      "type": "text",
+      "text": "spartanweaponryarcana.lexicon.elementium_weaponry.text2"
+    },
+    {
       "type": "crafting",
       "recipe": "spartanweaponryarcana:dreamwood_handle_from_string",
       "recipe2": "spartanweaponryarcana:dreamwood_pole_from_string"

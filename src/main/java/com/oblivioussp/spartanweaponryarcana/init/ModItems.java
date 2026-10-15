@@ -94,6 +94,20 @@ public class ModItems
 	 */
 	public static final DeferredItem<Item> TERRA_BURST_LENS = ModList.get().isLoaded("botania") ? REGISTRY.register("terra_burst", BotaniaCompat::createTerraBurstLens) : null;
 
+	private static Map<Item, WeaponMaterial> materialsByItem;
+
+	/** The Arcana material of a weapon, or null */
+	public static WeaponMaterial materialOf(Item item)
+	{
+		if(materialsByItem == null)
+		{
+			Map<Item, WeaponMaterial> map = new java.util.HashMap<>();
+			WEAPONS.forEach((material, weapons) -> weapons.forEach((weapon) -> map.put(weapon.get(), material)));
+			materialsByItem = map;
+		}
+		return materialsByItem.get(item);
+	}
+
 	private static WeaponMaterial material(String name, int durability, float speed, float damage, int enchantability)
 	{
 		TagKey<Item> ingot = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "ingots/" + name));

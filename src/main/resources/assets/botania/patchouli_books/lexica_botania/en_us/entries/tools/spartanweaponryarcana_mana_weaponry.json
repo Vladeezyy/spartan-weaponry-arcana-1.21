@@ -9,6 +9,10 @@
       "text": "spartanweaponryarcana.lexicon.mana_weaponry.text"
     },
     {
+      "type": "text",
+      "text": "spartanweaponryarcana.lexicon.mana_weaponry.text2"
+    },
+    {
       "type": "crafting",
       "recipe": "spartanweaponryarcana:livingwood_handle_from_string",
       "recipe2": "spartanweaponryarcana:livingwood_pole_from_string"

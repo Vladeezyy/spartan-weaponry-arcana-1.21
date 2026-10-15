@@ -153,9 +153,12 @@
   "material.spartanweaponryarcana.void_metal": "Metal del vacío",
   "material.spartanweaponryarcana.dawnstone": "Piedra del alba",
   "spartanweaponryarcana.lexicon.mana_weaponry": "Armas de manacero",
-  "spartanweaponryarcana.lexicon.mana_weaponry.text": "Si se pueden hacer armas especiales con materiales comunes, el $(item)manacero$(0) también sirve. Las armas de $(item)manacero$(0) además se reparan con el maná de las $(item)tablillas de maná$(0) o de las $(item)piscinas de maná$(0).$(br2)Necesitan $(item)mangos$(0) o $(item)astas de madera viviente$(0).",
+  "spartanweaponryarcana.lexicon.mana_weaponry.text": "Si se pueden hacer armas especiales con materiales comunes, el $(item)manacero$(0) también sirve. Las armas de $(item)manacero$(0) además se reparan con el maná de las $(item)tablillas de maná$(0) o de las $(item)piscinas de maná$(0).",
+  "spartanweaponryarcana.lexicon.mana_weaponry.text2": "Necesitan $(item)mangos$(0) o $(item)astas de madera viviente$(0).",
   "spartanweaponryarcana.lexicon.terra_weaponry": "Armas de terracero",
-  "spartanweaponryarcana.lexicon.terra_weaponry.text": "Igual que con el $(item)manacero$(0), las mismas armas se pueden hacer con $(item)terracero$(0), y también se reparan con el maná de las $(item)tablillas de maná$(0) o de las $(item)piscinas de maná$(0).$(br2)Además, como la $(item)Hoja terra$(0), lanzan una $(thing)ráfaga de maná$(0) que hace tanto daño como un ataque cuerpo a cuerpo. No funciona con armas arrojadizas ni a distancia.",
+  "spartanweaponryarcana.lexicon.terra_weaponry.text": "Igual que con el $(item)manacero$(0), las mismas armas se pueden hacer con $(item)terracero$(0), y también se reparan con el maná de las $(item)tablillas de maná$(0) o de las $(item)piscinas de maná$(0).",
+  "spartanweaponryarcana.lexicon.terra_weaponry.text2": "Además, como la $(item)Hoja terra$(0), lanzan una $(thing)ráfaga de maná$(0) que hace tanto daño como un ataque cuerpo a cuerpo. No funciona con armas arrojadizas ni a distancia.",
   "spartanweaponryarcana.lexicon.elementium_weaponry": "Armas de elementio",
-  "spartanweaponryarcana.lexicon.elementium_weaponry.text": "Con el exótico $(item)elementio$(0) de $(thing)Alfheim$(0) ya se pueden hacer las mismas armas especiales que con $(item)manacero$(0) y $(item)terracero$(0).$(br2)Pero las armas de $(item)elementio$(0) necesitan $(item)mangos$(0) y $(item)astas de madera onírica$(0)."
+  "spartanweaponryarcana.lexicon.elementium_weaponry.text": "Con el exótico $(item)elementio$(0) de $(thing)Alfheim$(0) ya se pueden hacer las mismas armas especiales que con $(item)manacero$(0) y $(item)terracero$(0).",
+  "spartanweaponryarcana.lexicon.elementium_weaponry.text2": "Pero las armas de $(item)elementio$(0) necesitan $(item)mangos$(0) y $(item)astas de madera onírica$(0)."
 }

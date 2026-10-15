@@ -1,9 +1,10 @@
 package com.oblivioussp.spartanweaponryarcana.event;
 
-import com.oblivioussp.spartanweaponry.api.IWeaponTraitContainer;
+import com.oblivioussp.spartanweaponry.api.WeaponMaterial;
 import com.oblivioussp.spartanweaponry.api.trait.WeaponTrait;
 import com.oblivioussp.spartanweaponryarcana.ModSpartanWeaponryArcana;
 import com.oblivioussp.spartanweaponryarcana.compat.botania.BotaniaCompat;
+import com.oblivioussp.spartanweaponryarcana.init.ModItems;
 import com.oblivioussp.spartanweaponryarcana.init.ModTraits;
 
 import net.minecraft.world.entity.player.Player;
@@ -14,7 +15,8 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 /**
  * Mana Repair and Warped. 1.12.2 ran them in the weapons' onUpdate, for every weapon kind; Spartan Weaponry 1.21 only
- * updates the traits of melee weapons, so they run here for every Arcana trait weapon in a player's inventory.
+ * updates the traits of melee weapons, so they run here for every Arcana weapon in a player's inventory (by its
+ * material's traits, which bows and heavy crossbows do not expose).
  */
 @EventBusSubscriber(modid = ModSpartanWeaponryArcana.ID)
 public class ArcanaEvents
@@ -32,9 +34,13 @@ public class ArcanaEvents
 		for(int i = 0; i < inventory.getContainerSize(); i++)
 		{
 			ItemStack stack = inventory.getItem(i);
-			if(stack.isEmpty() || !stack.isDamaged() || !(stack.getItem() instanceof IWeaponTraitContainer<?> container))
+			if(stack.isEmpty() || !stack.isDamaged())
 				continue;
-			for(WeaponTrait trait : container.getAllWeaponTraits())
+			WeaponMaterial material = ModItems.materialOf(stack.getItem());
+			if(material == null)
+				continue;
+			// The material's traits: Spartan Weaponry's bows and heavy crossbows have no trait container
+			for(WeaponTrait trait : material.getBonusTraits())
 			{
 				if(trait == ModTraits.MANA_REGENERATE.get() || trait == ModTraits.MANA_REGENERATE_TERRA.get())
 				{

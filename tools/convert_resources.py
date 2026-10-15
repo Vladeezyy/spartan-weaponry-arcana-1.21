@@ -321,7 +321,8 @@ def lexicon(out):
             else:
                 recipes.append('%s:%s' % (MOD, part))
         recipes += ['%s:%s_%s' % (MOD, mat, t) for t in TYPES.values()]
-        pages = [{'type': 'text', 'text': '%s.lexicon.%s.text' % (MOD, entry)}]
+        # The 1.12.2 text split at its paragraph break: one page holds less than the 1.12.2 one
+        pages = [{'type': 'text', 'text': '%s.lexicon.%s.text' % (MOD, entry)}, {'type': 'text', 'text': '%s.lexicon.%s.text2' % (MOD, entry)}]
         for i in range(0, len(recipes), 2):
             page = {'type': 'crafting', 'recipe': recipes[i]}
             if i + 1 < len(recipes):
@@ -331,7 +332,11 @@ def lexicon(out):
              {'name': '%s.lexicon.%s' % (MOD, entry), 'category': 'botania:tools', 'icon': '%s:%s_greatsword' % (MOD, mat),
               'advancement': advancement, 'pages': pages})
     for key, values in LEXICON_STRINGS.items():
-        STRINGS['%s.lexicon.%s' % (MOD, key)] = values
+        if key.endswith('.text'):
+            STRINGS['%s.lexicon.%s' % (MOD, key)] = tuple(v.split('$(br2)')[0] for v in values)
+            STRINGS['%s.lexicon.%s2' % (MOD, key)] = tuple(v.split('$(br2)')[1] for v in values)
+        else:
+            STRINGS['%s.lexicon.%s' % (MOD, key)] = values
 
 
 def main(arcana, weaponry, out):

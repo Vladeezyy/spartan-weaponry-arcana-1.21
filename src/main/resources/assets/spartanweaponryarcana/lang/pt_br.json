@@ -153,9 +153,12 @@
   "material.spartanweaponryarcana.void_metal": "Metal do Vazio",
   "material.spartanweaponryarcana.dawnstone": "Pedra da Aurora",
   "spartanweaponryarcana.lexicon.mana_weaponry": "Armas de Aço-Mana",
-  "spartanweaponryarcana.lexicon.mana_weaponry.text": "Se armas especiais podem ser feitas com materiais comuns, o $(item)Aço-Mana$(0) também serve. Armas de $(item)Aço-Mana$(0) ainda se regeneram com mana de $(item)Tabuletas de Mana$(0) ou $(item)Piscinas de Mana$(0).$(br2)Elas precisam de $(item)Cabos$(0) ou $(item)Hastes de Madeira Viva$(0).",
+  "spartanweaponryarcana.lexicon.mana_weaponry.text": "Se armas especiais podem ser feitas com materiais comuns, o $(item)Aço-Mana$(0) também serve. Armas de $(item)Aço-Mana$(0) ainda se regeneram com mana de $(item)Tabuletas de Mana$(0) ou $(item)Piscinas de Mana$(0).",
+  "spartanweaponryarcana.lexicon.mana_weaponry.text2": "Elas precisam de $(item)Cabos$(0) ou $(item)Hastes de Madeira Viva$(0).",
   "spartanweaponryarcana.lexicon.terra_weaponry": "Armas de Aço-Terra",
-  "spartanweaponryarcana.lexicon.terra_weaponry.text": "Assim como com o $(item)Aço-Mana$(0), as mesmas armas podem ser feitas com $(item)Aço-Terra$(0), que também se regeneram com mana de $(item)Tabuletas de Mana$(0) ou $(item)Piscinas de Mana$(0).$(br2)Além disso, como a $(item)Lâmina Terra$(0), elas disparam uma $(thing)Rajada de Mana$(0) que causa o dano de um ataque corpo a corpo. Não funciona com armas de arremesso ou à distância.",
+  "spartanweaponryarcana.lexicon.terra_weaponry.text": "Assim como com o $(item)Aço-Mana$(0), as mesmas armas podem ser feitas com $(item)Aço-Terra$(0), que também se regeneram com mana de $(item)Tabuletas de Mana$(0) ou $(item)Piscinas de Mana$(0).",
+  "spartanweaponryarcana.lexicon.terra_weaponry.text2": "Além disso, como a $(item)Lâmina Terra$(0), elas disparam uma $(thing)Rajada de Mana$(0) que causa o dano de um ataque corpo a corpo. Não funciona com armas de arremesso ou à distância.",
   "spartanweaponryarcana.lexicon.elementium_weaponry": "Armas de Elementium",
-  "spartanweaponryarcana.lexicon.elementium_weaponry.text": "Com o exótico $(item)Elementium$(0) de $(thing)Alfheim$(0), agora é possível fazer as mesmas armas especiais feitas de $(item)Aço-Mana$(0) e $(item)Aço-Terra$(0).$(br2)Desta vez, porém, armas de $(item)Elementium$(0) precisam de $(item)Cabos$(0) e $(item)Hastes de Madeira dos Sonhos$(0)."
+  "spartanweaponryarcana.lexicon.elementium_weaponry.text": "Com o exótico $(item)Elementium$(0) de $(thing)Alfheim$(0), agora é possível fazer as mesmas armas especiais feitas de $(item)Aço-Mana$(0) e $(item)Aço-Terra$(0).",
+  "spartanweaponryarcana.lexicon.elementium_weaponry.text2": "Desta vez, porém, armas de $(item)Elementium$(0) precisam de $(item)Cabos$(0) e $(item)Hastes de Madeira dos Sonhos$(0)."
 }

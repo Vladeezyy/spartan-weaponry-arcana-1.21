@@ -153,9 +153,12 @@
   "material.spartanweaponryarcana.void_metal": "Порожнечний метал",
   "material.spartanweaponryarcana.dawnstone": "Світанковий камінь",
   "spartanweaponryarcana.lexicon.mana_weaponry": "Зброя з манасталі",
-  "spartanweaponryarcana.lexicon.mana_weaponry.text": "Якщо особливу зброю можна робити зі звичайних матеріалів, то й $(item)манасталь$(0) для неї згодиться. Зброя з $(item)манасталі$(0) ще й ремонтується маною з $(item)мана-планшетів$(0) або $(item)басейнів мани$(0).$(br2)Для неї потрібні $(item)руків'я$(0) або $(item)держална з життєдрева$(0).",
+  "spartanweaponryarcana.lexicon.mana_weaponry.text": "Якщо особливу зброю можна робити зі звичайних матеріалів, то й $(item)манасталь$(0) для неї згодиться. Зброя з $(item)манасталі$(0) ще й ремонтується маною з $(item)мана-планшетів$(0) або $(item)басейнів мани$(0).",
+  "spartanweaponryarcana.lexicon.mana_weaponry.text2": "Для неї потрібні $(item)руків'я$(0) або $(item)держална з життєдрева$(0).",
   "spartanweaponryarcana.lexicon.terra_weaponry": "Зброя з терасталі",
-  "spartanweaponryarcana.lexicon.terra_weaponry.text": "Як і з $(item)манасталі$(0), ту саму зброю можна зробити з $(item)терасталі$(0), і вона теж ремонтується маною з $(item)мана-планшетів$(0) або $(item)басейнів мани$(0).$(br2)Крім того, як і $(item)Терра-клинок$(0), вона випускає $(thing)спалах мани$(0), що завдає шкоди як удар у ближньому бою. З метальною та стрілецькою зброєю це не діє.",
+  "spartanweaponryarcana.lexicon.terra_weaponry.text": "Як і з $(item)манасталі$(0), ту саму зброю можна зробити з $(item)терасталі$(0), і вона теж ремонтується маною з $(item)мана-планшетів$(0) або $(item)басейнів мани$(0).",
+  "spartanweaponryarcana.lexicon.terra_weaponry.text2": "Крім того, як і $(item)Терра-клинок$(0), вона випускає $(thing)спалах мани$(0), що завдає шкоди як удар у ближньому бою. З метальною та стрілецькою зброєю це не діє.",
   "spartanweaponryarcana.lexicon.elementium_weaponry": "Зброя з елементію",
-  "spartanweaponryarcana.lexicon.elementium_weaponry.text": "З екзотичного $(item)елементію$(0) з $(thing)Альфгейму$(0) тепер можна зробити ту саму особливу зброю, що й з $(item)манасталі$(0) та $(item)терасталі$(0).$(br2)Але для зброї з $(item)елементію$(0) потрібні $(item)руків'я$(0) та $(item)держална з мрійдрева$(0)."
+  "spartanweaponryarcana.lexicon.elementium_weaponry.text": "З екзотичного $(item)елементію$(0) з $(thing)Альфгейму$(0) тепер можна зробити ту саму особливу зброю, що й з $(item)манасталі$(0) та $(item)терасталі$(0).",
+  "spartanweaponryarcana.lexicon.elementium_weaponry.text2": "Але для зброї з $(item)елементію$(0) потрібні $(item)руків'я$(0) та $(item)держална з мрійдрева$(0)."
 }

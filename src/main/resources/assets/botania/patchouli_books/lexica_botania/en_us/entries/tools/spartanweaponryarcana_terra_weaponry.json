@@ -9,6 +9,10 @@
       "text": "spartanweaponryarcana.lexicon.terra_weaponry.text"
     },
     {
+      "type": "text",
+      "text": "spartanweaponryarcana.lexicon.terra_weaponry.text2"
+    },
+    {
       "type": "crafting",
       "recipe": "spartanweaponryarcana:terrasteel_dagger",
       "recipe2": "spartanweaponryarcana:terrasteel_longsword"

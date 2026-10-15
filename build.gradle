@@ -63,6 +63,8 @@ dependencies {
     localRuntime files("libs/SpartanWeaponry-neoforge-${spartanweaponry_version}.jar")
     // Botania (optional, see gradle.properties): compiled against for compat/botania only; -Pwith_botania runs it
     compileOnly fileTree(dir: 'libs/botania', include: '*.jar')
+    // The test scene (port/, not in the jar) opens Botania's lexicon through Patchouli's API
+    compileOnly "vazkii.patchouli:Patchouli:${patchouli_version}"
     if (project.hasProperty('with_botania')) {
         localRuntime fileTree(dir: 'libs/botania', include: '*.jar')
         localRuntime "vazkii.patchouli:Patchouli:${patchouli_version}"
