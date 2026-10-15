@@ -1,0 +1,72 @@
+{
+  "name": "spartanweaponryarcana.lexicon.mana_weaponry",
+  "category": "botania:tools",
+  "icon": "spartanweaponryarcana:manasteel_greatsword",
+  "advancement": "botania:main/mana_pool_pickup_lexicon",
+  "pages": [
+    {
+      "type": "text",
+      "text": "spartanweaponryarcana.lexicon.mana_weaponry.text"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:livingwood_handle_from_string",
+      "recipe2": "spartanweaponryarcana:livingwood_pole_from_string"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:manasteel_dagger",
+      "recipe2": "spartanweaponryarcana:manasteel_longsword"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:manasteel_katana",
+      "recipe2": "spartanweaponryarcana:manasteel_saber"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:manasteel_rapier",
+      "recipe2": "spartanweaponryarcana:manasteel_greatsword"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:manasteel_battle_hammer",
+      "recipe2": "spartanweaponryarcana:manasteel_warhammer"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:manasteel_spear",
+      "recipe2": "spartanweaponryarcana:manasteel_halberd"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:manasteel_pike",
+      "recipe2": "spartanweaponryarcana:manasteel_lance"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:manasteel_longbow",
+      "recipe2": "spartanweaponryarcana:manasteel_heavy_crossbow"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:manasteel_throwing_knife",
+      "recipe2": "spartanweaponryarcana:manasteel_tomahawk"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:manasteel_javelin",
+      "recipe2": "spartanweaponryarcana:manasteel_boomerang"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:manasteel_battleaxe",
+      "recipe2": "spartanweaponryarcana:manasteel_flanged_mace"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:manasteel_glaive",
+      "recipe2": "spartanweaponryarcana:manasteel_quarterstaff"
+    }
+  ]
+}

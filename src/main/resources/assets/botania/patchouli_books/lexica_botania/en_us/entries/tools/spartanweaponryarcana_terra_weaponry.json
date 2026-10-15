@@ -1,0 +1,67 @@
+{
+  "name": "spartanweaponryarcana.lexicon.terra_weaponry",
+  "category": "botania:tools",
+  "icon": "spartanweaponryarcana:terrasteel_greatsword",
+  "advancement": "botania:main/terrasteel_pickup_lexicon",
+  "pages": [
+    {
+      "type": "text",
+      "text": "spartanweaponryarcana.lexicon.terra_weaponry.text"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:terrasteel_dagger",
+      "recipe2": "spartanweaponryarcana:terrasteel_longsword"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:terrasteel_katana",
+      "recipe2": "spartanweaponryarcana:terrasteel_saber"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:terrasteel_rapier",
+      "recipe2": "spartanweaponryarcana:terrasteel_greatsword"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:terrasteel_battle_hammer",
+      "recipe2": "spartanweaponryarcana:terrasteel_warhammer"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:terrasteel_spear",
+      "recipe2": "spartanweaponryarcana:terrasteel_halberd"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:terrasteel_pike",
+      "recipe2": "spartanweaponryarcana:terrasteel_lance"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:terrasteel_longbow",
+      "recipe2": "spartanweaponryarcana:terrasteel_heavy_crossbow"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:terrasteel_throwing_knife",
+      "recipe2": "spartanweaponryarcana:terrasteel_tomahawk"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:terrasteel_javelin",
+      "recipe2": "spartanweaponryarcana:terrasteel_boomerang"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:terrasteel_battleaxe",
+      "recipe2": "spartanweaponryarcana:terrasteel_flanged_mace"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:terrasteel_glaive",
+      "recipe2": "spartanweaponryarcana:terrasteel_quarterstaff"
+    }
+  ]
+}

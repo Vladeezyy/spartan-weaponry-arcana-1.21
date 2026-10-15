@@ -151,5 +151,11 @@
   "material.spartanweaponryarcana.elementium": "Elementium",
   "material.spartanweaponryarcana.thaumium": "Thaumium",
   "material.spartanweaponryarcana.void_metal": "Leerenmetall",
-  "material.spartanweaponryarcana.dawnstone": "Morgenstein"
+  "material.spartanweaponryarcana.dawnstone": "Morgenstein",
+  "spartanweaponryarcana.lexicon.mana_weaponry": "Manastahlwaffen",
+  "spartanweaponryarcana.lexicon.mana_weaponry.text": "Wenn sich besondere Waffen aus gewöhnlichen Materialien fertigen lassen, eignet sich auch $(item)Manastahl$(0) dafür. Waffen aus $(item)Manastahl$(0) reparieren sich außerdem mit Mana aus $(item)Manatafeln$(0) oder $(item)Manabecken$(0).$(br2)Dafür braucht man $(item)Lebeholzgriffe$(0) oder $(item)Lebeholzschäfte$(0).",
+  "spartanweaponryarcana.lexicon.terra_weaponry": "Terrastahlwaffen",
+  "spartanweaponryarcana.lexicon.terra_weaponry.text": "Wie aus $(item)Manastahl$(0) lassen sich dieselben Waffen aus $(item)Terrastahl$(0) fertigen; auch sie reparieren sich mit Mana aus $(item)Manatafeln$(0) oder $(item)Manabecken$(0).$(br2)Außerdem senden sie wie die $(item)Terraklinge$(0) einen $(thing)Manastoß$(0) aus, der so viel Schaden wie ein Nahkampfangriff macht. Mit Wurf- oder Fernkampfwaffen geht das nicht.",
+  "spartanweaponryarcana.lexicon.elementium_weaponry": "Elementiumwaffen",
+  "spartanweaponryarcana.lexicon.elementium_weaponry.text": "Aus dem exotischen $(item)Elementium$(0) aus $(thing)Alfheim$(0) lassen sich nun dieselben besonderen Waffen fertigen wie aus $(item)Manastahl$(0) und $(item)Terrastahl$(0).$(br2)Waffen aus $(item)Elementium$(0) brauchen allerdings $(item)Traumholzgriffe$(0) und $(item)Traumholzschäfte$(0)."
 }

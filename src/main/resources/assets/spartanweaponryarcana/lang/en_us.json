@@ -151,5 +151,11 @@
   "material.spartanweaponryarcana.elementium": "Elementium",
   "material.spartanweaponryarcana.thaumium": "Thaumium",
   "material.spartanweaponryarcana.void_metal": "Void Metal",
-  "material.spartanweaponryarcana.dawnstone": "Dawnstone"
+  "material.spartanweaponryarcana.dawnstone": "Dawnstone",
+  "spartanweaponryarcana.lexicon.mana_weaponry": "Manasteel Weaponry",
+  "spartanweaponryarcana.lexicon.mana_weaponry.text": "With the ability to make more specialized weapons using mundane materials, it makes sense that $(item)Manasteel$(0) would also be suitable to use for these weapons. Using $(item)Manasteel$(0) also allows these specialist weapons to regenerate using mana from $(item)Mana Tablets$(0) or $(item)Mana Pools$(0).$(br2)Making these weapons require $(item)Livingwood Handles$(0) or $(item)Livingwood Poles$(0).",
+  "spartanweaponryarcana.lexicon.terra_weaponry": "Terrasteel Weaponry",
+  "spartanweaponryarcana.lexicon.terra_weaponry.text": "Just like specialized weapons made with $(item)Manasteel$(0), the same weapons can be made using $(item)Terrasteel$(0), which also have the same ability to regenerate using Mana using $(item)Mana Tablets$(0) or $(item)Mana Pools$(0).$(br2)Additionally, just like the $(item)Terra Blade$(0), the weapon can send out a $(thing)Mana Burst$(0), which does damage equal to a melee attack. However, this doesn't work with Throwing or Ranged Weapons.",
+  "spartanweaponryarcana.lexicon.elementium_weaponry": "Elementium Weaponry",
+  "spartanweaponryarcana.lexicon.elementium_weaponry.text": "Making use of the exotic material $(item)Elementium$(0) from $(thing)Alfheim$(0), it is now possible to make the same specialized weaponry that can be made from $(item)Manasteel$(0) and $(item)Terrasteel$(0).$(br2)This time however, $(item)Elementium$(0) weapons require $(item)Dreamwood Handles$(0) and $(item)Dreamwood Poles$(0)."
 }

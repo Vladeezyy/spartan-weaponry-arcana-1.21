@@ -274,6 +274,66 @@ for mat, names in MAT_NAMES.items():
                                              names[3], names[4][0].upper() + names[4][1:], names[5])
 
 
+# Botania lexicon (Patchouli book "botania:lexica_botania", category Tools): the three 1.12.2 entries
+LEXICON = {
+    'manasteel': ('mana_weaponry', 'botania:main/mana_pool_pickup_lexicon', ['livingwood_handle', 'livingwood_pole']),
+    'terrasteel': ('terra_weaponry', 'botania:main/terrasteel_pickup_lexicon', []),
+    'elementium': ('elementium_weaponry', 'botania:main/elf_lexicon_pickup', ['dreamwood_handle', 'dreamwood_pole', 'dreamwood_crossbow_limb']),
+}
+# key → (en, ru, uk, de, es, pt)
+LEXICON_STRINGS = {
+    'mana_weaponry': ('Manasteel Weaponry', 'Оружие из манастали', 'Зброя з манасталі', 'Manastahlwaffen', 'Armas de manacero', 'Armas de Aço-Mana'),
+    'mana_weaponry.text': (
+        'With the ability to make more specialized weapons using mundane materials, it makes sense that $(item)Manasteel$(0) would also be suitable to use for these weapons. Using $(item)Manasteel$(0) also allows these specialist weapons to regenerate using mana from $(item)Mana Tablets$(0) or $(item)Mana Pools$(0).$(br2)Making these weapons require $(item)Livingwood Handles$(0) or $(item)Livingwood Poles$(0).',
+        'Раз особое оружие можно делать из обычных материалов, то и $(item)манасталь$(0) для него подойдёт. Оружие из $(item)манастали$(0) к тому же чинится маной из $(item)мана-планшетов$(0) или $(item)бассейнов маны$(0).$(br2)Для него нужны $(item)рукояти$(0) или $(item)шесты из жизнедерева$(0).',
+        'Якщо особливу зброю можна робити зі звичайних матеріалів, то й $(item)манасталь$(0) для неї згодиться. Зброя з $(item)манасталі$(0) ще й ремонтується маною з $(item)мана-планшетів$(0) або $(item)басейнів мани$(0).$(br2)Для неї потрібні $(item)руків\'я$(0) або $(item)держална з життєдрева$(0).',
+        'Wenn sich besondere Waffen aus gewöhnlichen Materialien fertigen lassen, eignet sich auch $(item)Manastahl$(0) dafür. Waffen aus $(item)Manastahl$(0) reparieren sich außerdem mit Mana aus $(item)Manatafeln$(0) oder $(item)Manabecken$(0).$(br2)Dafür braucht man $(item)Lebeholzgriffe$(0) oder $(item)Lebeholzschäfte$(0).',
+        'Si se pueden hacer armas especiales con materiales comunes, el $(item)manacero$(0) también sirve. Las armas de $(item)manacero$(0) además se reparan con el maná de las $(item)tablillas de maná$(0) o de las $(item)piscinas de maná$(0).$(br2)Necesitan $(item)mangos$(0) o $(item)astas de madera viviente$(0).',
+        'Se armas especiais podem ser feitas com materiais comuns, o $(item)Aço-Mana$(0) também serve. Armas de $(item)Aço-Mana$(0) ainda se regeneram com mana de $(item)Tabuletas de Mana$(0) ou $(item)Piscinas de Mana$(0).$(br2)Elas precisam de $(item)Cabos$(0) ou $(item)Hastes de Madeira Viva$(0).'),
+    'terra_weaponry': ('Terrasteel Weaponry', 'Оружие из террастали', 'Зброя з терасталі', 'Terrastahlwaffen', 'Armas de terracero', 'Armas de Aço-Terra'),
+    'terra_weaponry.text': (
+        'Just like specialized weapons made with $(item)Manasteel$(0), the same weapons can be made using $(item)Terrasteel$(0), which also have the same ability to regenerate using Mana using $(item)Mana Tablets$(0) or $(item)Mana Pools$(0).$(br2)Additionally, just like the $(item)Terra Blade$(0), the weapon can send out a $(thing)Mana Burst$(0), which does damage equal to a melee attack. However, this doesn\'t work with Throwing or Ranged Weapons.',
+        'Как и из $(item)манастали$(0), то же оружие можно сделать из $(item)террастали$(0), и оно тоже чинится маной из $(item)мана-планшетов$(0) или $(item)бассейнов маны$(0).$(br2)Кроме того, как и $(item)Терра-клинок$(0), оно выпускает $(thing)вспышку маны$(0), наносящую урон как удар в ближнем бою. С метательным и стрелковым оружием это не работает.',
+        'Як і з $(item)манасталі$(0), ту саму зброю можна зробити з $(item)терасталі$(0), і вона теж ремонтується маною з $(item)мана-планшетів$(0) або $(item)басейнів мани$(0).$(br2)Крім того, як і $(item)Терра-клинок$(0), вона випускає $(thing)спалах мани$(0), що завдає шкоди як удар у ближньому бою. З метальною та стрілецькою зброєю це не діє.',
+        'Wie aus $(item)Manastahl$(0) lassen sich dieselben Waffen aus $(item)Terrastahl$(0) fertigen; auch sie reparieren sich mit Mana aus $(item)Manatafeln$(0) oder $(item)Manabecken$(0).$(br2)Außerdem senden sie wie die $(item)Terraklinge$(0) einen $(thing)Manastoß$(0) aus, der so viel Schaden wie ein Nahkampfangriff macht. Mit Wurf- oder Fernkampfwaffen geht das nicht.',
+        'Igual que con el $(item)manacero$(0), las mismas armas se pueden hacer con $(item)terracero$(0), y también se reparan con el maná de las $(item)tablillas de maná$(0) o de las $(item)piscinas de maná$(0).$(br2)Además, como la $(item)Hoja terra$(0), lanzan una $(thing)ráfaga de maná$(0) que hace tanto daño como un ataque cuerpo a cuerpo. No funciona con armas arrojadizas ni a distancia.',
+        'Assim como com o $(item)Aço-Mana$(0), as mesmas armas podem ser feitas com $(item)Aço-Terra$(0), que também se regeneram com mana de $(item)Tabuletas de Mana$(0) ou $(item)Piscinas de Mana$(0).$(br2)Além disso, como a $(item)Lâmina Terra$(0), elas disparam uma $(thing)Rajada de Mana$(0) que causa o dano de um ataque corpo a corpo. Não funciona com armas de arremesso ou à distância.'),
+    'elementium_weaponry': ('Elementium Weaponry', 'Оружие из элементия', 'Зброя з елементію', 'Elementiumwaffen', 'Armas de elementio', 'Armas de Elementium'),
+    'elementium_weaponry.text': (
+        'Making use of the exotic material $(item)Elementium$(0) from $(thing)Alfheim$(0), it is now possible to make the same specialized weaponry that can be made from $(item)Manasteel$(0) and $(item)Terrasteel$(0).$(br2)This time however, $(item)Elementium$(0) weapons require $(item)Dreamwood Handles$(0) and $(item)Dreamwood Poles$(0).',
+        'Из экзотического $(item)элементия$(0) из $(thing)Альфхейма$(0) теперь можно сделать то же особое оружие, что и из $(item)манастали$(0) и $(item)террастали$(0).$(br2)Но для оружия из $(item)элементия$(0) нужны $(item)рукояти$(0) и $(item)шесты из дерева мечтаний$(0).',
+        'З екзотичного $(item)елементію$(0) з $(thing)Альфгейму$(0) тепер можна зробити ту саму особливу зброю, що й з $(item)манасталі$(0) та $(item)терасталі$(0).$(br2)Але для зброї з $(item)елементію$(0) потрібні $(item)руків\'я$(0) та $(item)держална з мрійдрева$(0).',
+        'Aus dem exotischen $(item)Elementium$(0) aus $(thing)Alfheim$(0) lassen sich nun dieselben besonderen Waffen fertigen wie aus $(item)Manastahl$(0) und $(item)Terrastahl$(0).$(br2)Waffen aus $(item)Elementium$(0) brauchen allerdings $(item)Traumholzgriffe$(0) und $(item)Traumholzschäfte$(0).',
+        'Con el exótico $(item)elementio$(0) de $(thing)Alfheim$(0) ya se pueden hacer las mismas armas especiales que con $(item)manacero$(0) y $(item)terracero$(0).$(br2)Pero las armas de $(item)elementio$(0) necesitan $(item)mangos$(0) y $(item)astas de madera onírica$(0).',
+        'Com o exótico $(item)Elementium$(0) de $(thing)Alfheim$(0), agora é possível fazer as mesmas armas especiais feitas de $(item)Aço-Mana$(0) e $(item)Aço-Terra$(0).$(br2)Desta vez, porém, armas de $(item)Elementium$(0) precisam de $(item)Cabos$(0) e $(item)Hastes de Madeira dos Sonhos$(0).'),
+}
+
+
+def lexicon(out):
+    """Patchouli entries (assets/botania/patchouli_books/lexica_botania/en_us/entries/tools): a text page, then the
+    recipes two by two (1.12.2: one recipe per page)"""
+    for mat, (entry, advancement, parts) in LEXICON.items():
+        recipes = []
+        for part in parts:
+            if part.endswith('_handle') or part.endswith('_pole'):
+                wood, kind = part.split('_')
+                recipes.append('%s:%s_%s_from_string' % (MOD, wood, kind))
+            else:
+                recipes.append('%s:%s' % (MOD, part))
+        recipes += ['%s:%s_%s' % (MOD, mat, t) for t in TYPES.values()]
+        pages = [{'type': 'text', 'text': '%s.lexicon.%s.text' % (MOD, entry)}]
+        for i in range(0, len(recipes), 2):
+            page = {'type': 'crafting', 'recipe': recipes[i]}
+            if i + 1 < len(recipes):
+                page['recipe2'] = recipes[i + 1]
+            pages.append(page)
+        dump(os.path.join(out, 'assets', 'botania', 'patchouli_books', 'lexica_botania', 'en_us', 'entries', 'tools', '%s_%s.json' % (MOD, entry)),
+             {'name': '%s.lexicon.%s' % (MOD, entry), 'category': 'botania:tools', 'icon': '%s:%s_greatsword' % (MOD, mat),
+              'advancement': advancement, 'pages': pages})
+    for key, values in LEXICON_STRINGS.items():
+        STRINGS['%s.lexicon.%s' % (MOD, key)] = values
+
+
 def main(arcana, weaponry, out):
     src = os.path.join(arcana, 'src/main/resources/assets', MOD)
     sw_res = os.path.join(weaponry, 'src/main/resources')
@@ -358,6 +418,8 @@ def main(arcana, weaponry, out):
     for t, items in weapons.items():
         for item in items:
             dump(os.path.join(data, MOD, 'weapon_attributes', item.split(':')[1] + '.json'), {'parent': '%s:base/%s' % (SW, t)})
+
+    lexicon(out)
 
     # --- lang
     old = read_lang(os.path.join(src, 'lang', 'en_us.lang'))

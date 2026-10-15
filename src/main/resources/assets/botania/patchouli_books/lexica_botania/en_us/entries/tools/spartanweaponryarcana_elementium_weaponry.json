@@ -1,0 +1,76 @@
+{
+  "name": "spartanweaponryarcana.lexicon.elementium_weaponry",
+  "category": "botania:tools",
+  "icon": "spartanweaponryarcana:elementium_greatsword",
+  "advancement": "botania:main/elf_lexicon_pickup",
+  "pages": [
+    {
+      "type": "text",
+      "text": "spartanweaponryarcana.lexicon.elementium_weaponry.text"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:dreamwood_handle_from_string",
+      "recipe2": "spartanweaponryarcana:dreamwood_pole_from_string"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:dreamwood_crossbow_limb",
+      "recipe2": "spartanweaponryarcana:elementium_dagger"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:elementium_longsword",
+      "recipe2": "spartanweaponryarcana:elementium_katana"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:elementium_saber",
+      "recipe2": "spartanweaponryarcana:elementium_rapier"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:elementium_greatsword",
+      "recipe2": "spartanweaponryarcana:elementium_battle_hammer"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:elementium_warhammer",
+      "recipe2": "spartanweaponryarcana:elementium_spear"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:elementium_halberd",
+      "recipe2": "spartanweaponryarcana:elementium_pike"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:elementium_lance",
+      "recipe2": "spartanweaponryarcana:elementium_longbow"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:elementium_heavy_crossbow",
+      "recipe2": "spartanweaponryarcana:elementium_throwing_knife"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:elementium_tomahawk",
+      "recipe2": "spartanweaponryarcana:elementium_javelin"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:elementium_boomerang",
+      "recipe2": "spartanweaponryarcana:elementium_battleaxe"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:elementium_flanged_mace",
+      "recipe2": "spartanweaponryarcana:elementium_glaive"
+    },
+    {
+      "type": "crafting",
+      "recipe": "spartanweaponryarcana:elementium_quarterstaff"
+    }
+  ]
+}
