@@ -86,3 +86,10 @@ Found while porting:
 - Botania is unreleased for 1.21.1: tested with a build of its `1.21.1-porting` branch (build 457). A released Botania
   may change its API; the integration then turns itself off instead of crashing.
 - Botania needs NeoForge 21.1.262+ (its own requirement); without Botania the mod runs on 21.1.197+.
+
+## Performance check (2026-10-17)
+
+Checked, nothing to change: the only per-tick work is `ArcanaEvents.onPlayerTick` (server side), a pass over the
+player's inventory that skips empty and undamaged stacks before it looks at anything else; Mana Repair asks Botania
+for mana as the 1.12.2 weapons did every tick, Warped repairs once a second. No per-frame client code besides the
+Terra Slash packet on an air swing. The oil and NBT changes of Spartan Weaponry (its performance check) apply here too.
