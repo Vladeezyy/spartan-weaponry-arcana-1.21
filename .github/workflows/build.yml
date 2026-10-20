@@ -47,8 +47,9 @@ jobs:
           mkdir -p run && echo "eula=true" > run/eula.txt
           sh tools/servertest.sh
           mv build-server.log selftest-server.log
+          # the script kills the server after "Done", so Gradle's BUILD FAILED at the end is expected
           grep -q 'Done (' selftest-server.log
-          ! grep -qE 'Minecraft Crash Report|crash report has been saved|Failed to start|Registry loading errors|FAILED TO BIND|BUILD FAILED' selftest-server.log
+          ! grep -qE 'Minecraft Crash Report|crash report has been saved|Failed to start|Registry loading errors|FAILED TO BIND' selftest-server.log
 
       - name: Upload test logs
         if: ${{ !cancelled() }}

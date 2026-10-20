@@ -1,6 +1,6 @@
-!gradle/wrapper/gradle-wrapper.jar
 *.iml
 *.jar
+!gradle/wrapper/gradle-wrapper.jar
 *.log
 .DS_Store
 .gradle
