@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botania"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "botania"
+      ]
+    }
+  ],
+  "category": "misc",
+  "pattern": [
+    "w ",
+    "ws",
+    "w "
+  ],
+  "key": {
+    "s": {
+      "tag": "c:strings"
+    },
+    "w": {
+      "item": "botania:livingwood_twig"
+    }
+  },
+  "result": {
+    "id": "spartanweaponryarcana:livingwood_pole"
+  }
+}

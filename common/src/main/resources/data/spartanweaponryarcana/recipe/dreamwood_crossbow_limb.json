@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botania"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "botania"
+      ]
+    }
+  ],
+  "category": "misc",
+  "pattern": [
+    " ws",
+    "w s",
+    " ws"
+  ],
+  "key": {
+    "s": {
+      "item": "botania:mana_string"
+    },
+    "w": {
+      "item": "botania:dreamwood_twig"
+    }
+  },
+  "result": {
+    "id": "spartanweaponryarcana:dreamwood_crossbow_limb"
+  }
+}

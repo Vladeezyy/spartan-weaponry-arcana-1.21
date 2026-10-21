@@ -93,3 +93,20 @@ Checked, nothing to change: the only per-tick work is `ArcanaEvents.onPlayerTick
 player's inventory that skips empty and undamaged stacks before it looks at anything else; Mana Repair asks Botania
 for mana as the 1.12.2 weapons did every tick, Warped repairs once a second. No per-frame client code besides the
 Terra Slash packet on an air swing. The oil and NBT changes of Spartan Weaponry (its performance check) apply here too.
+
+## Multiloader: NeoForge + Fabric 1.21.1 (2026-10-21, branch `multiloader`)
+
+- Layout as in Spartan Weaponry: `common/` (no loader code; its own `platform/Platform` and `platform/Registrar`),
+  `neoforge/`, `fabric/`. Compiled against the multiloader Spartan Weaponry jars in `libs/`
+  (`spartanweaponry-{common,neoforge,fabric}-3.2.1.1+1.21.1.jar`); Botania in `libs/botania/{xplat,neoforge,fabric}`
+  (local builds of its 1.21.1-porting branch, not in git; the Fabric one needs Loom 1.15.5 and Fabric Loader 0.17.3).
+- Fabric start: the entrypoint `spartanweaponry`, which Spartan Weaponry calls after its own start (the weapons are
+  made by its API; Fabric does not order the `main` entrypoints of dependent mods).
+- Fabric: the Terra Slash swing at the air is a mixin in `Minecraft.startAttack` (NeoForge LeftClickEmpty); the player
+  tick is the end of the server tick; recipe conditions `fabric:load_conditions` next to the NeoForge ones (145 files,
+  `tools/port/neo2fabric_conditions.py`, `not tag_empty` → Spartan Weaponry's `spartanweaponry:tag_not_empty`).
+- Fix (both loaders): the Pixielated trait put its modifier on the registry's holder of `botania:pixie_spawn_chance`;
+  Botania's attribute maps hold its own holder (a `Holder.Reference` subclass), and vanilla compares holders by
+  identity, so on Fabric players got no pixie chance. The trait uses Botania's holder now.
+- Tests: client scene 22/22 without Botania and 34/34 with it, on both loaders; multiplayer test (dedicated server +
+  client, Terra Burst) 6/6 on both.

@@ -14,5 +14,5 @@ out/
 prodtest/*/
 run-*/
 run/
-!libs/SpartanWeaponry-neoforge-*.jar
+!libs/spartanweaponry-*.jar
 run-net/

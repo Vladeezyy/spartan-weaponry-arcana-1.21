@@ -1,0 +1,69 @@
+plugins {
+    id 'multiloader-loader'
+    id 'fabric-loom'
+}
+
+repositories {
+    maven {
+        name = 'Fabric'
+        url = 'https://maven.fabricmc.net'
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings loom.layered {
+        officialMojangMappings()
+        parchment("org.parchmentmc.data:parchment-${parchment_minecraft}:${parchment_version}@zip")
+    }
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+    // Spartan Weaponry (required) and the config API it needs
+    modImplementation files("${rootDir}/libs/spartanweaponry-fabric-${spartanweaponry_version}.jar")
+    modLocalRuntime "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${forgeconfigapiport_version}"
+    // Botania (optional): compiled against for compat/botania only; -Pwith_botania runs it with what it needs
+    modCompileOnly fileTree(dir: "${rootDir}/libs/botania/fabric", include: '*.jar')
+    modCompileOnly "vazkii.patchouli:Patchouli:${patchouli_fabric_version}"
+    if (project.hasProperty('with_botania')) {
+        modLocalRuntime fileTree(dir: "${rootDir}/libs/botania/fabric", include: '*.jar')
+        modLocalRuntime "vazkii.patchouli:Patchouli:${patchouli_fabric_version}"
+        modLocalRuntime "dev.emi:trinkets:${trinkets_version}"
+    }
+    modLocalRuntime "maven.modrinth:modmenu:11.0.3"
+}
+
+loom {
+    runs {
+        client {
+            client()
+            runDir('run')
+        }
+        server {
+            server()
+            runDir('run')
+        }
+        scene {
+            client()
+            name 'Scene'
+            vmArg '-Dspartanweaponryarcana.scene=true'
+            vmArg "-Dspartanweaponryarcana.scene.lang=${project.findProperty('scene_lang') ?: 'en_us'}"
+            runDir('run')
+        }
+        netServer {
+            server()
+            name 'NetServer'
+            runDir('run-net')
+        }
+        netClient {
+            client()
+            name 'NetClient'
+            vmArg '-Dspartanweaponryarcana.netscene=true'
+            programArgs '--quickPlayMultiplayer', 'localhost:25565', '--username', 'Dev'
+            runDir('run')
+        }
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    exclude 'com/oblivioussp/spartanweaponryarcana/port/**'
+}

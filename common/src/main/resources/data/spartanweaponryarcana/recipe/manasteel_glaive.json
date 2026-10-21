@@ -1,0 +1,57 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "spartanweaponry:type_disabled",
+      "disabled": [
+        "glaive"
+      ]
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botania"
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/manasteel"
+      }
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "spartanweaponry:type_disabled",
+      "disabled": [
+        "glaive"
+      ]
+    },
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "botania"
+      ]
+    },
+    {
+      "condition": "spartanweaponry:tag_not_empty",
+      "tag": "c:ingots/manasteel"
+    }
+  ],
+  "category": "equipment",
+  "pattern": [
+    " i",
+    " i",
+    "ip"
+  ],
+  "key": {
+    "i": {
+      "tag": "c:ingots/manasteel"
+    },
+    "p": {
+      "item": "spartanweaponryarcana:livingwood_pole"
+    }
+  },
+  "result": {
+    "id": "spartanweaponryarcana:manasteel_glaive"
+  }
+}

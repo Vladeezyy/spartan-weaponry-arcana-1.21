@@ -1,0 +1,47 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "spartanweaponry:type_disabled",
+      "disabled": [
+        "greatsword"
+      ]
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/void_metal"
+      }
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "spartanweaponry:type_disabled",
+      "disabled": [
+        "greatsword"
+      ]
+    },
+    {
+      "condition": "spartanweaponry:tag_not_empty",
+      "tag": "c:ingots/void_metal"
+    }
+  ],
+  "category": "equipment",
+  "pattern": [
+    " i ",
+    "iii",
+    "ihi"
+  ],
+  "key": {
+    "i": {
+      "tag": "c:ingots/void_metal"
+    },
+    "h": {
+      "item": "spartanweaponry:handle"
+    }
+  },
+  "result": {
+    "id": "spartanweaponryarcana:void_metal_greatsword"
+  }
+}

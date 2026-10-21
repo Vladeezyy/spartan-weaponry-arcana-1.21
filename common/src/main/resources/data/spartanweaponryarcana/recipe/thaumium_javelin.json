@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "spartanweaponry:type_disabled",
+      "disabled": [
+        "javelin"
+      ]
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/thaumium"
+      }
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "spartanweaponry:type_disabled",
+      "disabled": [
+        "javelin"
+      ]
+    },
+    {
+      "condition": "spartanweaponry:tag_not_empty",
+      "tag": "c:ingots/thaumium"
+    }
+  ],
+  "category": "equipment",
+  "pattern": [
+    "hi"
+  ],
+  "key": {
+    "i": {
+      "tag": "c:ingots/thaumium"
+    },
+    "h": {
+      "item": "spartanweaponry:pole"
+    }
+  },
+  "result": {
+    "id": "spartanweaponryarcana:thaumium_javelin"
+  }
+}

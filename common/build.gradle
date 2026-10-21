@@ -1,0 +1,38 @@
+plugins {
+    id 'multiloader-common'
+    id 'net.neoforged.moddev'
+}
+
+neoForge {
+    neoFormVersion = neo_form_version
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
+    }
+}
+
+dependencies {
+    // Spartan Weaponry (required): its API and weapon classes, the loader-neutral part
+    compileOnly files("${rootDir}/libs/spartanweaponry-common-${spartanweaponry_version}.jar")
+    // Botania (optional): its common code (vazkii.botania.api, the burst entity), compat/botania only
+    compileOnly fileTree(dir: "${rootDir}/libs/botania/xplat", include: '*.jar')
+    // The test scene (port/, not in the jars) opens Botania's lexicon through Patchouli's API
+    compileOnly "vazkii.patchouli:Patchouli-xplat:1.21.1-92"
+    compileOnly 'org.spongepowered:mixin:0.8.5'
+}
+
+configurations {
+    commonJava {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+    commonResources {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+}
+
+artifacts {
+    commonJava sourceSets.main.java.sourceDirectories.singleFile
+    commonResources sourceSets.main.resources.sourceDirectories.singleFile
+}
