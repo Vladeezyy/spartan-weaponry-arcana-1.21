@@ -221,7 +221,8 @@ public final class DevScene
 		{
 			try
 			{
-				var select = CreativeModeInventoryScreen.class.getDeclaredMethod("selectTab", CreativeModeTab.class);
+				// The private selectTab(CreativeModeTab), found by its signature: its name differs on a production (intermediary) client
+				var select = java.util.Arrays.stream(CreativeModeInventoryScreen.class.getDeclaredMethods()).filter(m -> m.getReturnType() == void.class && java.util.Arrays.equals(m.getParameterTypes(), new Class<?>[] { net.minecraft.world.item.CreativeModeTab.class })).findFirst().orElseThrow(NoSuchMethodException::new);
 				select.setAccessible(true);
 				select.invoke(screen, tab);
 			}

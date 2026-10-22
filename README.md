@@ -2,17 +2,18 @@
 
 <img src="docs/images/logo.png" width="320" alt="Spartan Weaponry: Arcana logo">
 
-# Spartan Weaponry: Arcana — NeoForge 1.21.1
+# Spartan Weaponry: Arcana — NeoForge & Fabric 1.21.1
 
 **Magic metals for the Spartan arsenal**
 
 [![Minecraft 1.21.1](https://img.shields.io/badge/Minecraft-1.21.1-3c8527)](https://www.minecraft.net)
 [![NeoForge 21.1](https://img.shields.io/badge/NeoForge-21.1.197%2B-e0682b)](https://neoforged.net)
-[![Requires Spartan Weaponry](https://img.shields.io/badge/requires-Spartan%20Weaponry%203.2.1%2B-8a2be2)](#-installation)
+[![Fabric 0.16](https://img.shields.io/badge/Fabric-0.16.14%2B-dbd0b4)](https://fabricmc.net)
+[![Requires Spartan Weaponry](https://img.shields.io/badge/requires-Spartan%20Weaponry%203.2.1.2%2B-8a2be2)](#-installation)
 [![License GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue)](LICENSE)
 
 An unofficial port of **Spartan Weaponry: Arcana** beta-1.0.3 by **ObliviousSpartan** from Minecraft 1.12.2 to
-**NeoForge 1.21.1**, as an addon of our [Spartan Weaponry 1.21.1 port](https://github.com/Vladeezyy/spartan-weaponry-1.21).
+**NeoForge and Fabric 1.21.1**, as an addon of our [Spartan Weaponry 1.21.1 port](https://github.com/Vladeezyy/spartan-weaponry-1.21).
 
 </div>
 
@@ -58,11 +59,20 @@ their own mods.
 
 ## 📦 Installation
 
-1. Install **NeoForge 21.1.197** or newer for Minecraft **1.21.1** (21.1.262 or newer with Botania, which needs it).
-2. Install **[Spartan Weaponry 3.2.1+1.21.1](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** or newer.
-3. Put `SpartanWeaponryArcana-neoforge-1.0.3+1.21.1.jar` from the [releases](../../releases) into `mods`.
+**NeoForge**
 
-Required on both the client and the server. Optional: **Botania** (Manasteel, Terrasteel, Elementium, the abilities
+1. Install **NeoForge 21.1.197** or newer for Minecraft **1.21.1** (21.1.262 or newer with Botania, which needs it).
+2. Install **[Spartan Weaponry 3.2.1.2+1.21.1](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** or newer.
+3. Put `spartanweaponryarcana-neoforge-1.0.3.1+1.21.1.jar` from the [releases](../../releases) into `mods`.
+
+**Fabric**
+
+1. Install **Fabric Loader 0.16.14** or newer for Minecraft **1.21.1** (0.17.3 or newer with Botania, which needs it).
+2. Install **[Spartan Weaponry 3.2.1.2+1.21.1](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** for
+   Fabric or newer, with what it needs (Fabric API, Forge Config API Port).
+3. Put `spartanweaponryarcana-fabric-1.0.3.1+1.21.1.jar` from the [releases](../../releases) into `mods`.
+
+Both: required on the client and the server. Optional: **Botania** (Manasteel, Terrasteel, Elementium, the abilities
 and the lexicon), any mod adding Thaumium, Void Metal or Dawnstone ingots, **JEI** / **EMI**.
 The weapons follow Spartan Weaponry's per-type settings (`config/spartanweaponry-common.toml`: speed, damage,
 disabled types).
@@ -105,7 +115,7 @@ The full list, with the reasons and what 1.21 changed, is in **[PORTLOG.md](PORT
 - **Spartan Weaponry: Arcana** and **Spartan Weaponry** — made by **ObliviousSpartan** ·
   [source](https://github.com/ObliviousSpartan/SpartanWeaponryArcana). All the content, art and ideas are theirs.
 - **Botania** by Vazkii and contributors: the Terra Burst follows its Terra Blade.
-- **Port** to NeoForge 1.21.1 — [Vladeezyy](https://github.com/Vladeezyy).
+- **Port** to NeoForge and Fabric 1.21.1 — [Vladeezyy](https://github.com/Vladeezyy).
 - Bugs of **this port**: [issues](../../issues). Please don't report port bugs to the original author.
 
 ### License
@@ -125,7 +135,7 @@ Please download the mod only from the official pages.
 **Магические металлы для спартанского арсенала**
 
 Неофициальный порт мода **Spartan Weaponry: Arcana** beta-1.0.3 от **ObliviousSpartan** с Minecraft 1.12.2 на
-**NeoForge 1.21.1** — аддон к нашему [порту Spartan Weaponry на 1.21.1](https://github.com/Vladeezyy/spartan-weaponry-1.21).
+**NeoForge и Fabric 1.21.1** — аддон к нашему [порту Spartan Weaponry на 1.21.1](https://github.com/Vladeezyy/spartan-weaponry-1.21).
 
 <details>
 <summary><b>⚔️ О моде</b></summary>
@@ -160,14 +170,24 @@ Arcana добавляет все виды оружия Spartan Weaponry из м�
 <details>
 <summary><b>📦 Установка</b></summary>
 
+**NeoForge**
+
 1. Установите **NeoForge 21.1.197** или новее для Minecraft **1.21.1** (с Botania — 21.1.262 или новее, это её
    требование).
-2. Установите **[Spartan Weaponry 3.2.1+1.21.1](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** или
+2. Установите **[Spartan Weaponry 3.2.1.2+1.21.1](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** или
    новее.
-3. Положите `SpartanWeaponryArcana-neoforge-1.0.3+1.21.1.jar` из [релизов](../../releases) в папку `mods`.
+3. Положите `spartanweaponryarcana-neoforge-1.0.3.1+1.21.1.jar` из [релизов](../../releases) в папку `mods`.
 
-Нужен и на клиенте, и на сервере. По желанию: **Botania** (манасталь, террасталь, элементий, способности и лексикон),
-любой мод со слитками таумиума, пустотного металла или рассветного камня, **JEI** / **EMI**.
+**Fabric**
+
+1. Установите **Fabric Loader 0.16.14** или новее для Minecraft **1.21.1** (с Botania — 0.17.3 или новее, это её
+   требование).
+2. Установите **[Spartan Weaponry 3.2.1.2+1.21.1](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** для
+   Fabric или новее, с тем, что ему нужно (Fabric API, Forge Config API Port).
+3. Положите `spartanweaponryarcana-fabric-1.0.3.1+1.21.1.jar` из [релизов](../../releases) в папку `mods`.
+
+Для обоих: нужен и на клиенте, и на сервере. По желанию: **Botania** (манасталь, террасталь, элементий, способности и
+лексикон), любой мод со слитками таумиума, пустотного металла или рассветного камня, **JEI** / **EMI**.
 На оружие действуют настройки Spartan Weaponry по видам оружия (`config/spartanweaponry-common.toml`: скорость,
 урон, отключение видов).
 
@@ -216,7 +236,7 @@ Arcana добавляет все виды оружия Spartan Weaponry из м�
 - **Spartan Weaponry: Arcana** и **Spartan Weaponry** — автор **ObliviousSpartan** ·
   [исходники](https://github.com/ObliviousSpartan/SpartanWeaponryArcana). Всё содержимое, графика и идеи — их.
 - **Botania** — Vazkii и участники: терра-вспышка повторяет Терра-клинок.
-- **Порт** на NeoForge 1.21.1 — [Vladeezyy](https://github.com/Vladeezyy).
+- **Порт** на NeoForge и Fabric 1.21.1 — [Vladeezyy](https://github.com/Vladeezyy).
 - Баги **этого порта**: [issues](../../issues). Пожалуйста, не пишите о багах порта автору оригинала.
 
 Как и оригинал, порт распространяется по **GNU GPL 3.0 или новее** ([LICENSE](LICENSE)).
