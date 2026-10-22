@@ -110,3 +110,18 @@ Terra Slash packet on an air swing. The oil and NBT changes of Spartan Weaponry 
   identity, so on Fabric players got no pixie chance. The trait uses Botania's holder now.
 - Tests: client scene 22/22 without Botania and 34/34 with it, on both loaders; multiplayer test (dedicated server +
   client, Terra Burst) 6/6 on both.
+
+## NeoForge and Fabric release check (2026-10-22, 1.0.3.1)
+
+- Release jar with Spartan Weaponry 3.2.1.2 on real NeoForge servers 21.1.197 and 21.1.259 and on a dedicated Fabric
+  server, with and without Botania: starts clean. The client scene on a Fabric production client: 22/22 without Botania,
+  34/34 with it.
+- Compatibility with Botania on both loaders (Sodium 0.6.13, Iris 1.8.8 on Fabric with Complementary Reimagined r5.9.3,
+  Lithium, FerriteCore, ModernFix, Jade; JEI on NeoForge, EMI on Fabric): 34/34. The first Fabric run failed "data pack:
+  Thaumium repairs with the ingot" and logged 96 EMI repair errors. Both were Spartan Weaponry's repair ingredient (see its
+  PORTLOG, fixed in 3.2.1.2).
+- Botania has no release past the 1.21.1 porting branch. It stays optional (`type="optional"`, Fabric `suggests`).
+- Later the same day: Loom's `ClientProductionRunTask` also puts the project's `remapJar` into `mods`, so the scenes
+  jar and the release jar ran together (Fabric happened to load the scenes jar). The task now uses `mods.setFrom`, and the
+  production runs were repeated with only the scenes jar: all checks pass. `fabric.mod.json` in the jar is valid JSON
+  now (the description's `\n` had become a raw newline when Gradle expanded the template).

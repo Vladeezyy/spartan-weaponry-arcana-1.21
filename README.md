@@ -109,6 +109,10 @@ The full list, with the reasons and what 1.21 changed, is in **[PORTLOG.md](PORT
   Warped, Pixielated, Terra Burst with real input, the lexicon entries; dedicated server with and without Botania; a
   client swinging a Terrasteel greatsword on a dedicated server.
 - **Compatibility**: Sodium 0.6, Iris 1.8, Lithium, FerriteCore, ModernFix, JEI, EMI, Jade, Curios, Patchouli.
+- **Fabric** (Loader 0.17.3, Fabric API 0.116.17, Forge Config API Port 21.1.6, Spartan Weaponry 3.2.1.2): the same
+  scene with and without Botania (34 and 22 checks), the release jar on a dedicated Fabric server with and without
+  Botania, the scene on a production client; compatibility with Sodium 0.6.13 + Iris 1.8.8 with Complementary shaders,
+  Lithium, FerriteCore, ModernFix, Jade, EMI, Trinkets, Patchouli.
 
 ## ❤️ Credits
 
@@ -227,6 +231,10 @@ Arcana добавляет все виды оружия Spartan Weaponry из м�
   луки), «Искажённое», «Пикси», терра-вспышка с настоящим вводом, статьи лексикона; выделенный сервер с Botania и без;
   клиент с двуручным мечом из террастали на выделенном сервере.
 - **Совместимость**: Sodium 0.6, Iris 1.8, Lithium, FerriteCore, ModernFix, JEI, EMI, Jade, Curios, Patchouli.
+- **Fabric** (Loader 0.17.3, Fabric API 0.116.17, Forge Config API Port 21.1.6, Spartan Weaponry 3.2.1.2): та же сцена
+  с Botania и без (34 и 22 проверки), release jar на выделенном сервере Fabric с Botania и без, сцена на
+  production-клиенте; совместимость с Sodium 0.6.13 + Iris 1.8.8 с шейдерами Complementary, Lithium, FerriteCore,
+  ModernFix, Jade, EMI, Trinkets, Patchouli.
 
 </details>
 
