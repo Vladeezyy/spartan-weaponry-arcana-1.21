@@ -1,5 +1,6 @@
 package com.oblivioussp.spartanweaponryarcana.init;
 
+import com.oblivioussp.spartanweaponry.api.ItemIds;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -10,9 +11,8 @@ import com.oblivioussp.spartanweaponry.api.SpartanWeaponryAPI;
 import com.oblivioussp.spartanweaponry.api.WeaponMaterial;
 import com.oblivioussp.spartanweaponry.api.trait.WeaponTrait;
 import com.oblivioussp.spartanweaponryarcana.ModSpartanWeaponryArcana;
-import com.oblivioussp.spartanweaponryarcana.compat.botania.BotaniaCompat;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import com.oblivioussp.spartanweaponryarcana.platform.Platform;
@@ -41,11 +41,11 @@ public class ModItems
 	public static final List<WeaponMaterial> MATERIALS = List.of(MANASTEEL, TERRASTEEL, ELEMENTIUM, THAUMIUM, VOIDMETAL, DAWNSTONE);
 
 	/** 1.12.2 "spartanweaponryarcana:material" metadata 0-4 */
-	public static final Registrar.Entry<Item, Item> LIVINGWOOD_HANDLE = REGISTRY.register("livingwood_handle", () -> new Item(new Item.Properties()));
-	public static final Registrar.Entry<Item, Item> LIVINGWOOD_POLE = REGISTRY.register("livingwood_pole", () -> new Item(new Item.Properties()));
-	public static final Registrar.Entry<Item, Item> DREAMWOOD_HANDLE = REGISTRY.register("dreamwood_handle", () -> new Item(new Item.Properties()));
-	public static final Registrar.Entry<Item, Item> DREAMWOOD_POLE = REGISTRY.register("dreamwood_pole", () -> new Item(new Item.Properties()));
-	public static final Registrar.Entry<Item, Item> DREAMWOOD_CROSSBOW_LIMB = REGISTRY.register("dreamwood_crossbow_limb", () -> new Item(new Item.Properties()));
+	public static final Registrar.Entry<Item, Item> LIVINGWOOD_HANDLE = REGISTRY.register("livingwood_handle", () -> new Item(ItemIds.properties()));
+	public static final Registrar.Entry<Item, Item> LIVINGWOOD_POLE = REGISTRY.register("livingwood_pole", () -> new Item(ItemIds.properties()));
+	public static final Registrar.Entry<Item, Item> DREAMWOOD_HANDLE = REGISTRY.register("dreamwood_handle", () -> new Item(ItemIds.properties()));
+	public static final Registrar.Entry<Item, Item> DREAMWOOD_POLE = REGISTRY.register("dreamwood_pole", () -> new Item(ItemIds.properties()));
+	public static final Registrar.Entry<Item, Item> DREAMWOOD_CROSSBOW_LIMB = REGISTRY.register("dreamwood_crossbow_limb", () -> new Item(ItemIds.properties()));
 	public static final List<Registrar.Entry<Item, Item>> CRAFTING_MATERIALS = List.of(LIVINGWOOD_HANDLE, LIVINGWOOD_POLE, DREAMWOOD_HANDLE, DREAMWOOD_POLE, DREAMWOOD_CROSSBOW_LIMB);
 
 	/** Weapon type (Spartan Weaponry id) → API factory, in the 1.12.2 order */
@@ -88,12 +88,6 @@ public class ModItems
 		}
 	}
 
-	/**
-	 * Internal item, not in any tab: the "lens" of the Terra Burst mana bursts (Botania looks for the burst's effects on
-	 * its lens item). Registered only with Botania, whose interface it implements.
-	 */
-	public static final Registrar.Entry<Item, Item> TERRA_BURST_LENS = Platform.INSTANCE.isModLoaded("botania") ? REGISTRY.register("terra_burst", BotaniaCompat::createTerraBurstLens) : null;
-
 	private static Map<Item, WeaponMaterial> materialsByItem;
 
 	/** The Arcana material of a weapon, or null */
@@ -110,8 +104,8 @@ public class ModItems
 
 	private static WeaponMaterial material(String name, int durability, float speed, float damage, int enchantability)
 	{
-		TagKey<Item> ingot = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/" + name));
-		TagKey<WeaponTrait> traits = TagKey.create(WeaponTraits.REGISTRY_KEY, ResourceLocation.fromNamespaceAndPath(ModSpartanWeaponryArcana.ID, "materials/" + name));
+		TagKey<Item> ingot = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", "ingots/" + name));
+		TagKey<WeaponTrait> traits = TagKey.create(WeaponTraits.REGISTRY_KEY, Identifier.fromNamespaceAndPath(ModSpartanWeaponryArcana.ID, "materials/" + name));
 		return new WeaponMaterial(name, ModSpartanWeaponryArcana.ID, durability, speed, damage, enchantability, ingot, traits);
 	}
 }

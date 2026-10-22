@@ -21,12 +21,8 @@
     "wws"
   ],
   "key": {
-    "s": {
-      "tag": "c:leathers"
-    },
-    "w": {
-      "item": "botania:dreamwood_twig"
-    }
+    "s": "#c:leathers",
+    "w": "botania:dreamwood_twig"
   },
   "result": {
     "id": "spartanweaponryarcana:dreamwood_pole",

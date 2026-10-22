@@ -8,11 +8,8 @@
       ]
     },
     {
-      "type": "neoforge:not",
-      "value": {
-        "type": "neoforge:tag_empty",
-        "tag": "c:ingots/void_metal"
-      }
+      "type": "spartanweaponry:tag_not_empty",
+      "tag": "c:ingots/void_metal"
     }
   ],
   "fabric:load_conditions": [
@@ -34,12 +31,8 @@
     "ip"
   ],
   "key": {
-    "i": {
-      "tag": "c:ingots/void_metal"
-    },
-    "p": {
-      "item": "spartanweaponry:pole"
-    }
+    "i": "#c:ingots/void_metal",
+    "p": "spartanweaponry:pole"
   },
   "result": {
     "id": "spartanweaponryarcana:void_metal_glaive"

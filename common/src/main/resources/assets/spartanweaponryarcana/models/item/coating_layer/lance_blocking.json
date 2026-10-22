@@ -1,0 +1,6 @@
+{
+  "parent": "spartanweaponry:item/base/lance_blocking",
+  "textures": {
+    "layer0": "spartanweaponry:item/coating/lance"
+  }
+}

@@ -5,7 +5,7 @@ import com.oblivioussp.spartanweaponryarcana.platform.Platform;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.fml.ModList;
-import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 public class NeoForgePlatform implements Platform
 {
@@ -30,6 +30,6 @@ public class NeoForgePlatform implements Platform
 	@Override
 	public void sendToServer(CustomPacketPayload payload)
 	{
-		PacketDistributor.sendToServer(payload);
+		ClientPacketDistributor.sendToServer(payload);
 	}
 }

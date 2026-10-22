@@ -12,36 +12,25 @@ repositories {
 
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
-    mappings loom.layered {
-        officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-${parchment_minecraft}:${parchment_version}@zip")
-    }
+    mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     // Spartan Weaponry (required) and the config API it needs
     modImplementation files("${rootDir}/libs/spartanweaponry-fabric-${spartanweaponry_version}.jar")
     modLocalRuntime "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${forgeconfigapiport_version}"
-    // Botania (optional): compiled against for compat/botania only; -Pwith_botania runs it with what it needs
-    modCompileOnly fileTree(dir: "${rootDir}/libs/botania/fabric", include: '*.jar')
-    modCompileOnly "vazkii.patchouli:Patchouli:${patchouli_fabric_version}"
-    if (project.hasProperty('with_botania')) {
-        modLocalRuntime fileTree(dir: "${rootDir}/libs/botania/fabric", include: '*.jar')
-        modLocalRuntime "vazkii.patchouli:Patchouli:${patchouli_fabric_version}"
-        modLocalRuntime "dev.emi:trinkets:${trinkets_version}"
-    }
-    modLocalRuntime "maven.modrinth:modmenu:11.0.3"
+    // 1.21.11: no Botania (no 1.21.11 version), so no compat/botania
+    modLocalRuntime "maven.modrinth:modmenu:17.0.1"
     // Popular client / performance mods for compatibility runs (-Pwith_compat)
     if (project.hasProperty('with_compat')) {
         modLocalRuntime "maven.modrinth:sodium:${compat_fabric_sodium}"
         modLocalRuntime "maven.modrinth:iris:${compat_fabric_iris}"
         // Iris' own libraries: Loom does not load the jars inside dev mods (Iris 1.8.8 for Fabric)
         modLocalRuntime 'org.anarres:jcpp:1.4.14'
-        modLocalRuntime 'io.github.douira:glsl-transformer:2.0.1'
+        modLocalRuntime 'org.antlr:antlr4-runtime:4.13.1'
+        modLocalRuntime 'io.github.douira:glsl-transformer:3.0.0-pre3'
         modLocalRuntime "maven.modrinth:lithium:${compat_fabric_lithium}"
         modLocalRuntime "maven.modrinth:ferrite-core:${compat_fabric_ferritecore}"
-        modLocalRuntime "maven.modrinth:modernfix:${compat_fabric_modernfix}"
         modLocalRuntime "maven.modrinth:jade:${compat_fabric_jade}"
-        modLocalRuntime "maven.modrinth:emi:${compat_fabric_emi}"
     }
 }
 
@@ -83,7 +72,7 @@ tasks.named('jar', Jar).configure {
 
 // Production runs (tools/prodtest.sh): Minecraft with intermediary names, as players have it. The release jar on a
 // real Fabric server; the scene on a production client from a jar that is the release jar plus port/ (so the code is
-// checked against the intermediary names). -Pwith_botania adds Botania (and what it needs) to both.
+// checked against the intermediary names).
 configurations {
     productionMods { transitive = false }
 }
@@ -91,11 +80,6 @@ dependencies {
     productionMods "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     productionMods "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${forgeconfigapiport_version}"
     productionMods files("${rootDir}/libs/spartanweaponry-fabric-${spartanweaponry_version}.jar")
-    if (project.hasProperty('with_botania')) {
-        productionMods fileTree(dir: "${rootDir}/libs/botania/fabric", include: '*.jar')
-        productionMods "vazkii.patchouli:Patchouli:${patchouli_fabric_version}"
-        productionMods "dev.emi:trinkets:${trinkets_version}"
-    }
 }
 var scenesJar = tasks.register('scenesJar', Jar) {
     from sourceSets.main.output

@@ -21,12 +21,8 @@
     "wws"
   ],
   "key": {
-    "s": {
-      "tag": "minecraft:wool"
-    },
-    "w": {
-      "item": "botania:dreamwood_twig"
-    }
+    "s": "#minecraft:wool",
+    "w": "botania:dreamwood_twig"
   },
   "result": {
     "id": "spartanweaponryarcana:dreamwood_pole",

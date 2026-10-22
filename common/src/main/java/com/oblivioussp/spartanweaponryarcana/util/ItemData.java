@@ -1,5 +1,6 @@
 package com.oblivioussp.spartanweaponryarcana.util;
 
+import com.oblivioussp.spartanweaponry.util.ItemNbt;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
@@ -12,10 +13,9 @@ public class ItemData
 		CustomData.update(DataComponents.CUSTOM_DATA, stack, (tag) -> tag.putFloat(key, value));
 	}
 
-	@SuppressWarnings("deprecation")
+	/** Without a copy of the item data (Spartan Weaponry's ItemNbt; 1.21.11 has no CustomData#getUnsafe) */
 	public static float getFloat(ItemStack stack, String key, float defaultValue)
 	{
-		CustomData data = stack.get(DataComponents.CUSTOM_DATA);
-		return data != null && data.contains(key) ? data.getUnsafe().getFloat(key) : defaultValue;
+		return ItemNbt.read(stack).getFloatOr(key, defaultValue);
 	}
 }

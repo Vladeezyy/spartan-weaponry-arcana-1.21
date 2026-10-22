@@ -1,0 +1,88 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "spartanweaponry:throwing",
+    "on_true": {
+      "type": "minecraft:condition",
+      "property": "spartanweaponry:oiled",
+      "on_true": {
+        "type": "minecraft:composite",
+        "models": [
+          {
+            "type": "minecraft:model",
+            "model": "spartanweaponryarcana:item/terrasteel_warhammer_throwing"
+          },
+          {
+            "type": "minecraft:model",
+            "model": "spartanweaponryarcana:item/coating_layer/warhammer_throwing",
+            "tints": [
+              {
+                "type": "spartanweaponry:oil"
+              }
+            ]
+          }
+        ]
+      },
+      "on_false": {
+        "type": "minecraft:model",
+        "model": "spartanweaponryarcana:item/terrasteel_warhammer_throwing"
+      }
+    },
+    "on_false": {
+      "type": "minecraft:condition",
+      "property": "spartanweaponry:blocking",
+      "on_true": {
+        "type": "minecraft:condition",
+        "property": "spartanweaponry:oiled",
+        "on_true": {
+          "type": "minecraft:composite",
+          "models": [
+            {
+              "type": "minecraft:model",
+              "model": "spartanweaponryarcana:item/terrasteel_warhammer_blocking"
+            },
+            {
+              "type": "minecraft:model",
+              "model": "spartanweaponryarcana:item/coating_layer/warhammer_blocking",
+              "tints": [
+                {
+                  "type": "spartanweaponry:oil"
+                }
+              ]
+            }
+          ]
+        },
+        "on_false": {
+          "type": "minecraft:model",
+          "model": "spartanweaponryarcana:item/terrasteel_warhammer_blocking"
+        }
+      },
+      "on_false": {
+        "type": "minecraft:condition",
+        "property": "spartanweaponry:oiled",
+        "on_true": {
+          "type": "minecraft:composite",
+          "models": [
+            {
+              "type": "minecraft:model",
+              "model": "spartanweaponryarcana:item/terrasteel_warhammer"
+            },
+            {
+              "type": "minecraft:model",
+              "model": "spartanweaponryarcana:item/coating_layer/warhammer",
+              "tints": [
+                {
+                  "type": "spartanweaponry:oil"
+                }
+              ]
+            }
+          ]
+        },
+        "on_false": {
+          "type": "minecraft:model",
+          "model": "spartanweaponryarcana:item/terrasteel_warhammer"
+        }
+      }
+    }
+  }
+}

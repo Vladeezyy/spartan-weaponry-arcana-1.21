@@ -29,7 +29,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -44,7 +44,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
-import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.LevelSettings;
 import net.minecraft.world.level.WorldDataConfiguration;
@@ -56,10 +56,10 @@ import net.minecraft.world.level.storage.LevelResource;
 
 /**
  * Development scene, inert unless the {@code spartanweaponryarcana.scene} system property is set
- * ({@code ./gradlew runScene}, with Botania: {@code -Pwith_botania}): creates the world {@code swa_scene}, shows every
+ * ({@code ./gradlew runScene}): creates the world {@code swa_scene}, shows every
  * item (item frame walls, creative tab, tooltips, first person), runs functional checks and logs them as
- * {@code [scene] CHECK}, saves {@code run/screenshots/scene_*.png}, then quits. The Botania checks (mana repair, Terra
- * Burst, Pixielated, lexicon) are in {@link BotaniaScene}. {@code -Dspartanweaponryarcana.scene.lang=ru_ru} switches
+ * {@code [scene] CHECK}, saves {@code run/screenshots/scene_*.png}, then quits. 1.21.11 has no Botania (1.21.1: BotaniaScene
+ * checked mana repair, Terra Burst, Pixielated and the lexicon). {@code -Dspartanweaponryarcana.scene.lang=ru_ru} switches
  * the language.
  */
 public final class DevScene
@@ -87,7 +87,7 @@ public final class DevScene
 		// Creative tab and tooltips
 		at(290, mc -> {
 			mc.options.hideGui = false;
-			mc.getToasts().clear();
+			mc.getToastManager().clear();
 			mc.setScreen(new CreativeModeInventoryScreen(mc.player, mc.player.connection.enabledFeatures(), true));
 		});
 		at(300, mc -> selectTab(mc, ModCreativeTabs.ARCANA.get()));
@@ -115,8 +115,6 @@ public final class DevScene
 		at(475, mc -> server(mc, DevScene::thaumiumDataPack));
 		at(560, mc -> server(mc, DevScene::checkThaumiumDataPack));
 		int end = 565;
-		if(botania)
-			end = BotaniaScene.steps(end);
 		at(end, mc -> {
 			Log.info("[scene] DONE, failed checks: " + failures);
 			mc.stop();
@@ -155,8 +153,8 @@ public final class DevScene
 				return;
 			}
 			opened = true;
-			GLFW.glfwSetWindowSize(mc.getWindow().getWindow(), 1600, 900);
-			LevelSettings settings = new LevelSettings(WORLD, GameType.CREATIVE, false, Difficulty.NORMAL, true, new GameRules(), WorldDataConfiguration.DEFAULT);
+			GLFW.glfwSetWindowSize(mc.getWindow().handle(), 1600, 900);
+			LevelSettings settings = new LevelSettings(WORLD, GameType.CREATIVE, false, Difficulty.NORMAL, true, new GameRules(net.minecraft.world.flag.FeatureFlags.DEFAULT_FLAGS), WorldDataConfiguration.DEFAULT);
 			mc.createWorldOpenFlows().createFreshLevel(WORLD, settings, new WorldOptions(1234L, false, false), WorldPresets::createNormalWorldDimensions, new TitleScreen());
 			return;
 		}
@@ -164,7 +162,7 @@ public final class DevScene
 			return;
 		mc.options.pauseOnLostFocus = false;
 		mc.getTutorial().setStep(net.minecraft.client.tutorial.TutorialSteps.NONE);
-		mc.getToasts().clear();
+		mc.getToastManager().clear();
 		if(mc.screen instanceof PauseScreen)
 			mc.setScreen(null);
 		tick++;
@@ -212,7 +210,7 @@ public final class DevScene
 
 	static void shot(Minecraft mc, String name)
 	{
-		Screenshot.grab(mc.gameDirectory, "scene_" + name + ".png", mc.getMainRenderTarget(), c -> Log.info("[scene] " + c.getString()));
+		Screenshot.grab(mc.gameDirectory, "scene_" + name + ".png", mc.getMainRenderTarget(), 1, c -> Log.info("[scene] " + c.getString()));
 	}
 
 	private static void selectTab(Minecraft mc, CreativeModeTab tab)
@@ -221,6 +219,17 @@ public final class DevScene
 		{
 			try
 			{
+				// Fabric API pages the tabs: a tab on another page is not selected without switching to its page first
+				// (FabricCreativeInventoryScreen, by reflection: the common code does not see Fabric API)
+				try
+				{
+					int page = (int)screen.getClass().getMethod("getPage", CreativeModeTab.class).invoke(screen, tab);
+					screen.getClass().getMethod("switchToPage", int.class).invoke(screen, page);
+				}
+				catch(NoSuchMethodException e)
+				{
+					// NeoForge: its own pages follow the selected tab
+				}
 				// The private selectTab(CreativeModeTab), found by its signature: its name differs on a production (intermediary) client
 				var select = java.util.Arrays.stream(CreativeModeInventoryScreen.class.getDeclaredMethods()).filter(m -> m.getReturnType() == void.class && java.util.Arrays.equals(m.getParameterTypes(), new Class<?>[] { net.minecraft.world.item.CreativeModeTab.class })).findFirst().orElseThrow(NoSuchMethodException::new);
 				select.setAccessible(true);
@@ -235,27 +244,33 @@ public final class DevScene
 
 	static ItemStack weapon(WeaponMaterial material, String type)
 	{
-		return new ItemStack(BuiltInRegistries.ITEM.get(id(material.getMaterialName() + "_" + type)));
+		return new ItemStack(BuiltInRegistries.ITEM.getValue(id(material.getMaterialName() + "_" + type)));
 	}
 
-	static ResourceLocation id(String path)
+	/** 1.21.2+: a recipe is looked up by its key */
+	static net.minecraft.resources.ResourceKey<net.minecraft.world.item.crafting.Recipe<?>> recipe(String path)
 	{
-		return ResourceLocation.fromNamespaceAndPath(ModSpartanWeaponryArcana.ID, path);
+		return net.minecraft.resources.ResourceKey.create(Registries.RECIPE, id(path));
+	}
+
+	static Identifier id(String path)
+	{
+		return Identifier.fromNamespaceAndPath(ModSpartanWeaponryArcana.ID, path);
 	}
 
 	// ------------------------------------------------------------------------------------------------------ stage
 
 	private static void setup(ServerPlayer player)
 	{
-		MinecraftServer server = player.getServer();
+		MinecraftServer server = player.level().getServer();
 		player.setGameMode(GameType.CREATIVE);
 		server.setDifficulty(Difficulty.NORMAL, true);
-		server.getGameRules().getRule(GameRules.RULE_DOMOBSPAWNING).set(false, server);
-		server.getGameRules().getRule(GameRules.RULE_DAYLIGHT).set(false, server);
-		server.getGameRules().getRule(GameRules.RULE_WEATHER_CYCLE).set(false, server);
-		server.getGameRules().getRule(GameRules.RULE_MOBGRIEFING).set(false, server);
-		player.serverLevel().setDayTime(6000);
-		player.serverLevel().setWeatherParameters(6000, 0, false, false);
+		server.overworld().getGameRules().set(GameRules.SPAWN_MOBS, false, server);
+		server.overworld().getGameRules().set(GameRules.ADVANCE_TIME, false, server);
+		server.overworld().getGameRules().set(GameRules.ADVANCE_WEATHER, false, server);
+		server.overworld().getGameRules().set(GameRules.MOB_GRIEFING, false, server);
+		player.level().setDayTime(6000);
+		player.level().setWeatherParameters(6000, 0, false, false);
 	}
 
 	/** Item frame wall n (0 Botania materials and parts, 1 Thaumcraft and Embers materials): its centre */
@@ -266,13 +281,13 @@ public final class DevScene
 
 	private static void look(ServerPlayer player, BlockPos wall)
 	{
-		player.teleportTo(player.serverLevel(), wall.getX() + 0.5, wall.getY() + 2, wall.getZ() - 13.5, 0.0F, 0.0F);
+		player.teleportTo(player.level(), wall.getX() + 0.5, wall.getY() + 2, wall.getZ() - 13.5, java.util.Set.of(), 0.0F, 0.0F, true);
 	}
 
 	private static void buildStage(ServerPlayer player)
 	{
-		ServerLevel level = player.serverLevel();
-		BlockPos spawn = level.getSharedSpawnPos();
+		ServerLevel level = player.level();
+		BlockPos spawn = level.getRespawnData().pos();
 		int y = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, spawn.getX(), spawn.getZ());
 		// In the air, above the terrain (no overhang shading the walls)
 		stage = new BlockPos(spawn.getX(), Math.max(y + 40, 140), spawn.getZ());
@@ -293,7 +308,7 @@ public final class DevScene
 		// One row per material (the parts before the first one)
 		frames(level, wall(0), botania, 22, 5);
 		frames(level, wall(1), others, 22, 0);
-		player.teleportTo(level, stage.getX() + 0.5, stage.getY(), stage.getZ() + 0.5, 0.0F, 0.0F);
+		player.teleportTo(level, stage.getX() + 0.5, stage.getY(), stage.getZ() + 0.5, java.util.Set.of(), 0.0F, 0.0F, true);
 	}
 
 	private static void frames(ServerLevel level, BlockPos centre, List<ItemStack> items, int columns, int firstRow)
@@ -324,7 +339,7 @@ public final class DevScene
 	{
 		player.setItemSlot(EquipmentSlot.MAINHAND, weapon(ModItems.TERRASTEEL, "greatsword"));
 		player.setItemSlot(EquipmentSlot.OFFHAND, weapon(ModItems.ELEMENTIUM, "dagger"));
-		player.teleportTo(player.serverLevel(), stage.getX() + 0.5, stage.getY(), stage.getZ() + 5.5, 0.0F, 10.0F);
+		player.teleportTo(player.level(), stage.getX() + 0.5, stage.getY(), stage.getZ() + 5.5, java.util.Set.of(), 0.0F, 10.0F, true);
 	}
 
 	// ------------------------------------------------------------------------------------------------------ checks
@@ -334,7 +349,7 @@ public final class DevScene
 		long items = BuiltInRegistries.ITEM.keySet().stream().filter(k -> k.getNamespace().equals(ModSpartanWeaponryArcana.ID)).count();
 		long expected = 6 * 22 + 5 + (BotaniaCompat.isLoaded() ? 1 : 0);
 		check("items: 132 weapons, 5 parts" + (BotaniaCompat.isLoaded() ? ", the Terra Burst lens" : ""), items == expected, items + " of " + expected);
-		long traits = player.serverLevel().registryAccess().registryOrThrow(com.oblivioussp.spartanweaponry.api.WeaponTraits.REGISTRY_KEY).keySet().stream()
+		long traits = player.level().registryAccess().lookupOrThrow(com.oblivioussp.spartanweaponry.api.WeaponTraits.REGISTRY_KEY).keySet().stream()
 				.filter(k -> k.getNamespace().equals(ModSpartanWeaponryArcana.ID)).count();
 		check("traits: 5", traits == 5, traits);
 		// Every weapon has a model (no missing texture), checked on the client side by the item frame screenshots;
@@ -345,15 +360,15 @@ public final class DevScene
 
 	private static void checkRecipes(ServerPlayer player)
 	{
-		var recipes = player.serverLevel().getRecipeManager();
+		var recipes = player.level().recipeAccess();
 		boolean botania = BotaniaCompat.isLoaded();
-		long ours = recipes.getRecipes().stream().filter(r -> r.id().getNamespace().equals(ModSpartanWeaponryArcana.ID)).count();
+		long ours = recipes.getRecipes().stream().filter(r -> r.id().identifier().getNamespace().equals(ModSpartanWeaponryArcana.ID)).count();
 		// Botania: 3 materials × 22 weapons + handles and poles (from string and from Mana String) + crossbow limb
 		check("recipes loaded: " + (botania ? "the Botania ones" : "none (no material)"), botania ? ours >= 66 + 5 : ours == 0, ours + " recipes");
-		check("Manasteel recipes " + (botania ? "present" : "skipped"), recipes.byKey(id("manasteel_longsword")).isPresent() == botania, "");
-		check("Livingwood handle recipe " + (botania ? "present" : "skipped"), recipes.byKey(id("livingwood_handle_from_string")).isPresent() == botania, "");
-		check("Thaumium recipes skipped (no c:ingots/thaumium)", recipes.byKey(id("thaumium_longsword")).isEmpty(), "");
-		check("Dawnstone recipes skipped (no c:ingots/dawnstone)", recipes.byKey(id("dawnstone_longsword")).isEmpty(), "");
+		check("Manasteel recipes " + (botania ? "present" : "skipped"), recipes.byKey(recipe("manasteel_longsword")).isPresent() == botania, "");
+		check("Livingwood handle recipe " + (botania ? "present" : "skipped"), recipes.byKey(recipe("livingwood_handle_from_string")).isPresent() == botania, "");
+		check("Thaumium recipes skipped (no c:ingots/thaumium)", recipes.byKey(recipe("thaumium_longsword")).isEmpty(), "");
+		check("Dawnstone recipes skipped (no c:ingots/dawnstone)", recipes.byKey(recipe("dawnstone_longsword")).isEmpty(), "");
 	}
 
 	private static List<ItemStack> tabItems(ServerLevel level)
@@ -370,7 +385,7 @@ public final class DevScene
 
 	private static void checkTab(ServerPlayer player)
 	{
-		List<ItemStack> tab = tabItems(player.serverLevel());
+		List<ItemStack> tab = tabItems(player.level());
 		boolean botania = BotaniaCompat.isLoaded();
 		check("tab: " + (botania ? "Botania weapons and parts" : "empty without the materials (issue #5)"), botania ? tab.size() == 66 + 5 : tab.isEmpty(), tab.size() + " items");
 		check("tab: no Thaumium / Void Metal / Dawnstone weapons", !tabHas(tab, ModItems.THAUMIUM) && !tabHas(tab, ModItems.VOIDMETAL) && !tabHas(tab, ModItems.DAWNSTONE), "");
@@ -400,7 +415,7 @@ public final class DevScene
 
 	private static void checkEnchanting(ServerPlayer player)
 	{
-		var possible = player.serverLevel().registryAccess().registryOrThrow(Registries.ENCHANTMENT).getTag(EnchantmentTags.IN_ENCHANTING_TABLE).orElseThrow();
+		var possible = player.level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT).get(EnchantmentTags.IN_ENCHANTING_TABLE).orElseThrow();
 		List<String> sword = offered(weapon(ModItems.MANASTEEL, "longsword"), possible);
 		check("enchanting table: Manasteel longsword", sword.contains("minecraft:sharpness") && sword.contains("minecraft:unbreaking"), sword);
 		List<String> bow = offered(weapon(ModItems.TERRASTEEL, "longbow"), possible);
@@ -414,7 +429,7 @@ public final class DevScene
 	private static List<String> offered(ItemStack stack, net.minecraft.core.HolderSet.Named<net.minecraft.world.item.enchantment.Enchantment> possible)
 	{
 		List<EnchantmentInstance> available = EnchantmentHelper.getAvailableEnchantmentResults(30, stack, possible.stream());
-		return available.stream().map(e -> e.enchantment.unwrapKey().get().location().toString()).distinct().sorted().toList();
+		return available.stream().map(e -> e.enchantment().unwrapKey().get().identifier().toString()).distinct().sorted().toList();
 	}
 
 	private static void prepareWarped(ServerPlayer player)
@@ -442,7 +457,7 @@ public final class DevScene
 
 	private static void thaumiumDataPack(ServerPlayer player)
 	{
-		MinecraftServer server = player.getServer();
+		MinecraftServer server = player.level().getServer();
 		Path pack = server.getWorldPath(LevelResource.DATAPACK_DIR).resolve("thaumium_test");
 		try
 		{
@@ -460,14 +475,14 @@ public final class DevScene
 
 	private static void checkThaumiumDataPack(ServerPlayer player)
 	{
-		var recipes = player.serverLevel().getRecipeManager();
-		var longsword = recipes.byKey(id("thaumium_longsword"));
+		var recipes = player.level().recipeAccess();
+		var longsword = recipes.byKey(recipe("thaumium_longsword"));
 		check("data pack: Thaumium recipes appear with an ingot in c:ingots/thaumium", longsword.isPresent()
-				&& longsword.get().value().getIngredients().stream().anyMatch(i -> i.test(new ItemStack(Items.COPPER_INGOT))), longsword.map(r -> r.id()));
-		List<ItemStack> tab = tabItems(player.serverLevel());
+				&& longsword.get().value().placementInfo().ingredients().stream().anyMatch(i -> i.test(new ItemStack(Items.COPPER_INGOT))), longsword.map(r -> r.id()));
+		List<ItemStack> tab = tabItems(player.level());
 		check("data pack: Thaumium weapons in the tab", tabHas(tab, ModItems.THAUMIUM) && !tabHas(tab, ModItems.DAWNSTONE), tab.size() + " items");
 		ItemStack sword = weapon(ModItems.THAUMIUM, "longsword");
-		check("data pack: Thaumium repairs with the ingot", sword.getItem().isValidRepairItem(sword, new ItemStack(Items.COPPER_INGOT)), "");
+		check("data pack: Thaumium repairs with the ingot", sword.has(net.minecraft.core.component.DataComponents.REPAIRABLE) && sword.get(net.minecraft.core.component.DataComponents.REPAIRABLE).isValidRepairItem(new ItemStack(Items.COPPER_INGOT)), "");
 	}
 
 	/** Shows the tooltips of some items side by side */
@@ -489,7 +504,10 @@ public final class DevScene
 			{
 				ItemStack stack = stacks.get(i);
 				List<Component> lines = Screen.getTooltipFromItem(Minecraft.getInstance(), stack);
-				graphics.renderTooltip(font, lines, stack.getTooltipImage(), i * width / stacks.size() + 4, 16);
+				// 1.21.6+: one tooltip per frame is deferred; these are drawn at once, as vanilla's tooltip
+				List<net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent> components = new java.util.ArrayList<>();
+				lines.forEach(line -> components.add(net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent.create(line.getVisualOrderText())));
+				graphics.renderTooltip(font, components, i * width / stacks.size() + 4, 16, net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner.INSTANCE, null);
 				for(Component line : lines)
 					if(line.getString().contains(ModSpartanWeaponryArcana.ID + "."))
 						Log.info("[scene] CHECK FAIL untranslated tooltip line (" + line.getString() + ")");
@@ -499,6 +517,6 @@ public final class DevScene
 
 	static Item item(String id)
 	{
-		return BuiltInRegistries.ITEM.get(ResourceLocation.parse(id));
+		return BuiltInRegistries.ITEM.getValue(Identifier.parse(id));
 	}
 }

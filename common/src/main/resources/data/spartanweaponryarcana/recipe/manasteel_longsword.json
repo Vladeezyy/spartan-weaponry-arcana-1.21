@@ -12,11 +12,8 @@
       "modid": "botania"
     },
     {
-      "type": "neoforge:not",
-      "value": {
-        "type": "neoforge:tag_empty",
-        "tag": "c:ingots/manasteel"
-      }
+      "type": "spartanweaponry:tag_not_empty",
+      "tag": "c:ingots/manasteel"
     }
   ],
   "fabric:load_conditions": [
@@ -44,12 +41,8 @@
     "ihi"
   ],
   "key": {
-    "i": {
-      "tag": "c:ingots/manasteel"
-    },
-    "h": {
-      "item": "spartanweaponryarcana:livingwood_handle"
-    }
+    "i": "#c:ingots/manasteel",
+    "h": "spartanweaponryarcana:livingwood_handle"
   },
   "result": {
     "id": "spartanweaponryarcana:manasteel_longsword"

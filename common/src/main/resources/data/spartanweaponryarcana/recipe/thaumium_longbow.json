@@ -8,11 +8,8 @@
       ]
     },
     {
-      "type": "neoforge:not",
-      "value": {
-        "type": "neoforge:tag_empty",
-        "tag": "c:ingots/thaumium"
-      }
+      "type": "spartanweaponry:tag_not_empty",
+      "tag": "c:ingots/thaumium"
     }
   ],
   "fabric:load_conditions": [
@@ -34,18 +31,10 @@
     "iss"
   ],
   "key": {
-    "i": {
-      "tag": "c:ingots/thaumium"
-    },
-    "h": {
-      "item": "spartanweaponry:handle"
-    },
-    "s": {
-      "tag": "c:strings"
-    },
-    "w": {
-      "tag": "c:rods/wooden"
-    }
+    "i": "#c:ingots/thaumium",
+    "h": "spartanweaponry:handle",
+    "s": "#c:strings",
+    "w": "#c:rods/wooden"
   },
   "result": {
     "id": "spartanweaponryarcana:thaumium_longbow"

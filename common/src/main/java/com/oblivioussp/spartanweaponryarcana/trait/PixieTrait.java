@@ -12,7 +12,7 @@ import com.oblivioussp.spartanweaponryarcana.ModSpartanWeaponryArcana;
 
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
@@ -24,8 +24,8 @@ import net.minecraft.world.item.ItemStack;
  */
 public class PixieTrait extends WeaponTrait implements IGenericTraitCallback
 {
-	public static final ResourceLocation PIXIE_SPAWN_CHANCE = ResourceLocation.fromNamespaceAndPath("botania", "pixie_spawn_chance");
-	public static final ResourceLocation MODIFIER_ID = ResourceLocation.fromNamespaceAndPath(ModSpartanWeaponryArcana.ID, "pixielated");
+	public static final Identifier PIXIE_SPAWN_CHANCE = Identifier.fromNamespaceAndPath("botania", "pixie_spawn_chance");
+	public static final Identifier MODIFIER_ID = Identifier.fromNamespaceAndPath(ModSpartanWeaponryArcana.ID, "pixielated");
 
 	public PixieTrait(String typeIn, String modIdIn, TraitQuality qualityIn)
 	{

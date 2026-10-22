@@ -16,21 +16,11 @@
   ],
   "category": "misc",
   "ingredients": [
-    {
-      "item": "botania:dreamwood_twig"
-    },
-    {
-      "item": "botania:dreamwood_twig"
-    },
-    {
-      "item": "botania:dreamwood_twig"
-    },
-    {
-      "item": "botania:dreamwood_twig"
-    },
-    {
-      "tag": "c:leathers"
-    }
+    "botania:dreamwood_twig",
+    "botania:dreamwood_twig",
+    "botania:dreamwood_twig",
+    "botania:dreamwood_twig",
+    "#c:leathers"
   ],
   "result": {
     "id": "spartanweaponryarcana:dreamwood_handle",

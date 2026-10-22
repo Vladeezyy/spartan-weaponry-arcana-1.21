@@ -6,11 +6,6 @@ plugins {
 neoForge {
     version = neo_version
 
-    parchment {
-        minecraftVersion = parchment_minecraft
-        mappingsVersion = parchment_version
-    }
-
     runs {
         client {
             client()
@@ -57,15 +52,7 @@ dependencies {
     // Spartan Weaponry (required): its API and its weapon classes
     compileOnly files("${rootDir}/libs/spartanweaponry-neoforge-${spartanweaponry_version}.jar")
     localRuntime files("${rootDir}/libs/spartanweaponry-neoforge-${spartanweaponry_version}.jar")
-    // Botania (optional): compiled against for compat/botania only; -Pwith_botania runs it
-    compileOnly fileTree(dir: "${rootDir}/libs/botania/neoforge", include: '*.jar')
-    // The test scene (port/, not in the jar) opens Botania's lexicon through Patchouli's API
-    compileOnly "vazkii.patchouli:Patchouli:${patchouli_version}"
-    if (project.hasProperty('with_botania')) {
-        localRuntime fileTree(dir: "${rootDir}/libs/botania/neoforge", include: '*.jar')
-        localRuntime "vazkii.patchouli:Patchouli:${patchouli_version}"
-        localRuntime "top.theillusivec4.curios:curios-neoforge:${curios_version}"
-    }
+    // 1.21.11: no Botania (no 1.21.11 version), so no compat/botania
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
     // Popular client / performance mods for compatibility runs (-Pwith_compat)
     if (project.hasProperty('with_compat')) {
@@ -73,9 +60,7 @@ dependencies {
         localRuntime "maven.modrinth:iris:${compat_iris}"
         localRuntime "maven.modrinth:lithium:${compat_lithium}"
         localRuntime "maven.modrinth:ferrite-core:${compat_ferritecore}"
-        localRuntime "maven.modrinth:modernfix:${compat_modernfix}"
         localRuntime "maven.modrinth:jade:${compat_jade}"
-        localRuntime "maven.modrinth:emi:${compat_emi}"
     }
 }
 

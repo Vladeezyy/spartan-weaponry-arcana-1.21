@@ -129,3 +129,24 @@ Terra Slash packet on an air swing. The oil and NBT changes of Spartan Weaponry 
   `iris.properties`). Repeated with Complementary Reimagined r5.9.3 on: 34/34 on both loaders. The Mana Repair check
   now counts server ticks: under shaders the client ran its 40 ticks while the integrated server ran 17, so the weapons
   had repaired 17 points (one per server tick, as intended).
+
+## 1.21.11 (branch mc/1.21.11, 2026-10-22, 1.0.3.1+1.21.11)
+
+NeoForge 21.11.48, Fabric Loader 0.19.5 + Fabric API 0.141.6, Forge Config API Port 21.11.1, Spartan Weaponry
+3.2.1.2+1.21.11, Fabric Loom 1.17.21 (Gradle 9.8.1). No Parchment for 1.21.11.
+
+- **No Botania**: Botania has no 1.21.11 version, so compat/botania (the Botania API code: mana repair, the Terra
+  Burst, the pixie attribute, the burst lens item) and its scene are not on this branch. BotaniaCompat says Botania is
+  absent; the rest behaves as on 1.21.1 without Botania: the Manasteel, Terrasteel and Elementium weapons are
+  registered, their recipes wait for Botania, the traits have nothing to act on. The multiplayer scene checks that a
+  Terrasteel swing sends no burst and the connection holds.
+- Items get their ids from the registrar (Spartan Weaponry's ItemIds); looks from item definitions made by
+  `tools/port/gen_item_definitions.py` (Spartan Weaponry's generator for this namespace: the oil coating as a
+  condition, blocking/throwing/pull/charged/empty/ammo as Weaponry's properties).
+- Recipes: string ingredients; `neoforge:not tag_empty` → Spartan Weaponry's `tag_not_empty` (NeoForge 21.11 only asks
+  whether a tag exists). Enchanting: `enchantable/sword` → `enchantable/melee_weapon` and `enchantable/sweeping`.
+- Item data read without a copy through Spartan Weaponry's ItemNbt (CustomData#getUnsafe is gone).
+- **Verified**: client scene 22 checks on both loaders, all pass; the multiplayer scene; release jar on a real NeoForge
+  21.11.48 server and a dedicated Fabric server; the scene on a Fabric production client; compatibility runs with
+  Sodium 0.8.14, Iris 1.10.8, Lithium, FerriteCore, Jade (Fabric with the Complementary shaders, NeoForge without a
+  shader pack: Iris 1.10.8's NeoForge shadow pass crashes on enchanted items). No stress scene (owner's call).

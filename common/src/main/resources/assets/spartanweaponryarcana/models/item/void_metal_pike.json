@@ -1,22 +1,6 @@
 {
   "parent": "spartanweaponry:item/base/pike",
-  "loader": "spartanweaponry:oil_coated_item",
-  "overrides": [
-    {
-      "model": "spartanweaponryarcana:item/void_metal_pike_blocking",
-      "predicate": {
-        "spartanweaponry:blocking": 1.0
-      }
-    },
-    {
-      "model": "spartanweaponryarcana:item/void_metal_pike_throwing",
-      "predicate": {
-        "spartanweaponry:throwing": 1.0
-      }
-    }
-  ],
   "textures": {
-    "coating": "spartanweaponry:item/coating/pike",
     "layer0": "spartanweaponryarcana:item/void_metal_pike"
   }
 }

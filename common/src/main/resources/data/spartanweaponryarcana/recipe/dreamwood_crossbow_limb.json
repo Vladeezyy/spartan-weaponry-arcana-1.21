@@ -21,12 +21,8 @@
     " ws"
   ],
   "key": {
-    "s": {
-      "item": "botania:mana_string"
-    },
-    "w": {
-      "item": "botania:dreamwood_twig"
-    }
+    "s": "botania:mana_string",
+    "w": "botania:dreamwood_twig"
   },
   "result": {
     "id": "spartanweaponryarcana:dreamwood_crossbow_limb"

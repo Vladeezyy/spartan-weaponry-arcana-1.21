@@ -1,7 +1,7 @@
 #!/bin/sh
 # Multiplayer check (max 15 min) on LOADER=neoforge|fabric: starts the dev server (<loader>/run-net/, the dev player
 # "Dev" is an operator), waits for it, runs the client scene port/NetScene that joins it, then stops the server and
-# prints the checks and errors of both. Extra gradle arguments are passed on to both (e.g. -Pwith_botania, which the
+# prints the checks and errors of both. Extra gradle arguments are passed on to both (which the
 # Terra Burst needs).
 . "$(dirname "$0")/common.sh"
 NET="$LOADER/run-net"

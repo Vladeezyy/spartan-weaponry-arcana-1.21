@@ -16,21 +16,11 @@
   ],
   "category": "misc",
   "ingredients": [
-    {
-      "item": "botania:livingwood_twig"
-    },
-    {
-      "item": "botania:livingwood_twig"
-    },
-    {
-      "item": "botania:livingwood_twig"
-    },
-    {
-      "item": "botania:livingwood_twig"
-    },
-    {
-      "tag": "minecraft:wool"
-    }
+    "botania:livingwood_twig",
+    "botania:livingwood_twig",
+    "botania:livingwood_twig",
+    "botania:livingwood_twig",
+    "#minecraft:wool"
   ],
   "result": {
     "id": "spartanweaponryarcana:livingwood_handle",

@@ -1,27 +1,5 @@
 {
   "parent": "spartanweaponry:item/base/longbow",
-  "overrides": [
-    {
-      "model": "spartanweaponryarcana:item/terrasteel_longbow_pulling_0",
-      "predicate": {
-        "spartanweaponry:pulling": 1.0
-      }
-    },
-    {
-      "model": "spartanweaponryarcana:item/terrasteel_longbow_pulling_1",
-      "predicate": {
-        "spartanweaponry:pull": 0.65,
-        "spartanweaponry:pulling": 1.0
-      }
-    },
-    {
-      "model": "spartanweaponryarcana:item/terrasteel_longbow_pulling_2",
-      "predicate": {
-        "spartanweaponry:pull": 0.9,
-        "spartanweaponry:pulling": 1.0
-      }
-    }
-  ],
   "textures": {
     "layer0": "spartanweaponryarcana:item/terrasteel_longbow_standby"
   }

@@ -1,5 +1,6 @@
 package com.oblivioussp.spartanweaponryarcana.port;
 
+import com.oblivioussp.spartanweaponryarcana.compat.botania.BotaniaCompat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -14,7 +15,7 @@ import net.minecraft.client.gui.screens.PauseScreen;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.animal.golem.IronGolem;
 import net.minecraft.world.phys.AABB;
 
 /**
@@ -44,17 +45,20 @@ public final class NetScene
 			command(mc, "give @s spartanweaponryarcana:terrasteel_greatsword");
 			command(mc, "summon minecraft:iron_golem ~ 200 ~9 {NoAI:1b,Rotation:[180f,0f]}");
 		});
-		at(70, mc -> mc.player.getInventory().selected = 0);
+		at(70, mc -> mc.player.getInventory().setSelectedSlot(0));
 		// The attack strength fills up (more than a second with the item in hand)
 		at(110, mc -> {
 			check("holding a Terrasteel greatsword", BuiltInRegistries.ITEM.getKey(mc.player.getMainHandItem().getItem()).getPath().equals("terrasteel_greatsword"), mc.player.getMainHandItem());
 			check("golem in front", golem(mc) != null, "");
 			KeyMapping.click(com.mojang.blaze3d.platform.InputConstants.getKey(mc.options.keyAttack.saveString()));
 		});
-		at(113, mc -> check("a mana burst flies (sent by the server)", bursts(mc) > 0, bursts(mc)));
+		// 1.21.11 has no Botania: the swing sends no Terra Burst, the connection must hold all the same
+		boolean botania = BotaniaCompat.isLoaded();
+		at(113, mc -> check(botania ? "a mana burst flies (sent by the server)" : "no mana burst without Botania", (bursts(mc) > 0) == botania, bursts(mc)));
 		at(140, mc -> {
 			IronGolem golem = golem(mc);
-			check("the burst hurt the golem", golem != null && golem.getHealth() < golem.getMaxHealth(), golem == null ? "no golem" : golem.getHealth() + "/" + golem.getMaxHealth());
+			if(botania)
+				check("the burst hurt the golem", golem != null && golem.getHealth() < golem.getMaxHealth(), golem == null ? "no golem" : golem.getHealth() + "/" + golem.getMaxHealth());
 			check("still connected", mc.getConnection() != null && mc.level != null, "");
 		});
 		// Several swings in a row (the 1.12.2 kick happened on every swing)
@@ -65,8 +69,8 @@ public final class NetScene
 		at(235, mc -> {
 			Log.info("[netscene] DONE, failed checks: " + failures);
 			done = true;
-			mc.level.disconnect();
-			mc.disconnect();
+			mc.level.disconnect(net.minecraft.network.chat.Component.empty());
+			mc.disconnectWithProgressScreen();
 			mc.stop();
 		});
 	}

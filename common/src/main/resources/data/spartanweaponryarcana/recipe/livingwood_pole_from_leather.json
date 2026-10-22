@@ -21,12 +21,8 @@
     "wws"
   ],
   "key": {
-    "s": {
-      "tag": "c:leathers"
-    },
-    "w": {
-      "item": "botania:livingwood_twig"
-    }
+    "s": "#c:leathers",
+    "w": "botania:livingwood_twig"
   },
   "result": {
     "id": "spartanweaponryarcana:livingwood_pole",

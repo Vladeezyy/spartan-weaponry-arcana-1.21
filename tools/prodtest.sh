@@ -1,5 +1,5 @@
 #!/bin/sh
-# Release check: the jars as players have them, without and with Botania. NeoForge: the release jar (and Spartan
+# Release check: the jars as players have them (1.21.11: no Botania). NeoForge: the release jar (and Spartan
 # Weaponry's from libs/) on the real NeoForge servers in prodtest/*/ (prodtest/serve.sh). Fabric: the release jar on a
 # real Fabric server (:fabric:prodServer), then the client scene on a production client (intermediary names;
 # :fabric:prodScene runs a jar that is the release jar plus port/). Outputs: prodtest/<version>/server*.out,
@@ -18,7 +18,7 @@ for dir in prodtest/*/; do
 	echo "=== NeoForge server $(grep -o 'neoforge/[0-9.]*' "$dir/run.sh" | head -1): $(ls "$dir/mods" | tr '\n' ' ')"
 	(cd "$dir" && sh ../serve.sh && cp server.out server-alone.out)
 done
-for B in "" "-Pwith_botania"; do
+for B in ""; do
 	TAG=$([ -n "$B" ] && echo "-botania")
 	echo "=== Fabric server$TAG"
 	mkdir -p fabric/run-prod-server && echo "eula=true" > fabric/run-prod-server/eula.txt

@@ -8,11 +8,8 @@
       ]
     },
     {
-      "type": "neoforge:not",
-      "value": {
-        "type": "neoforge:tag_empty",
-        "tag": "c:ingots/thaumium"
-      }
+      "type": "spartanweaponry:tag_not_empty",
+      "tag": "c:ingots/thaumium"
     }
   ],
   "fabric:load_conditions": [
@@ -34,21 +31,11 @@
     "i h"
   ],
   "key": {
-    "i": {
-      "tag": "c:ingots/thaumium"
-    },
-    "h": {
-      "item": "spartanweaponry:handle"
-    },
-    "b": {
-      "item": "minecraft:bow"
-    },
-    "s": {
-      "tag": "c:strings"
-    },
-    "w": {
-      "tag": "minecraft:logs"
-    }
+    "i": "#c:ingots/thaumium",
+    "h": "spartanweaponry:handle",
+    "b": "minecraft:bow",
+    "s": "#c:strings",
+    "w": "#minecraft:logs"
   },
   "result": {
     "id": "spartanweaponryarcana:thaumium_heavy_crossbow"

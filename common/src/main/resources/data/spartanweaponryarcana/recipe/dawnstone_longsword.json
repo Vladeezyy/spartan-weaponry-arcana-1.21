@@ -8,11 +8,8 @@
       ]
     },
     {
-      "type": "neoforge:not",
-      "value": {
-        "type": "neoforge:tag_empty",
-        "tag": "c:ingots/dawnstone"
-      }
+      "type": "spartanweaponry:tag_not_empty",
+      "tag": "c:ingots/dawnstone"
     }
   ],
   "fabric:load_conditions": [
@@ -34,12 +31,8 @@
     "ihi"
   ],
   "key": {
-    "i": {
-      "tag": "c:ingots/dawnstone"
-    },
-    "h": {
-      "item": "spartanweaponry:handle"
-    }
+    "i": "#c:ingots/dawnstone",
+    "h": "spartanweaponry:handle"
   },
   "result": {
     "id": "spartanweaponryarcana:dawnstone_longsword"

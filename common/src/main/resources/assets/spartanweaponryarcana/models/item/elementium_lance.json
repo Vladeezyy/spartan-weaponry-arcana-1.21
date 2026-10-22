@@ -1,22 +1,6 @@
 {
   "parent": "spartanweaponry:item/base/lance",
-  "loader": "spartanweaponry:oil_coated_item",
-  "overrides": [
-    {
-      "model": "spartanweaponryarcana:item/elementium_lance_blocking",
-      "predicate": {
-        "spartanweaponry:blocking": 1.0
-      }
-    },
-    {
-      "model": "spartanweaponryarcana:item/elementium_lance_throwing",
-      "predicate": {
-        "spartanweaponry:throwing": 1.0
-      }
-    }
-  ],
   "textures": {
-    "coating": "spartanweaponry:item/coating/lance",
     "layer0": "spartanweaponryarcana:item/elementium_lance"
   }
 }

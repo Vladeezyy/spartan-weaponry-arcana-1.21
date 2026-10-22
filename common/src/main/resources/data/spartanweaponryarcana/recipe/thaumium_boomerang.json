@@ -8,11 +8,8 @@
       ]
     },
     {
-      "type": "neoforge:not",
-      "value": {
-        "type": "neoforge:tag_empty",
-        "tag": "c:ingots/thaumium"
-      }
+      "type": "spartanweaponry:tag_not_empty",
+      "tag": "c:ingots/thaumium"
     }
   ],
   "fabric:load_conditions": [
@@ -34,12 +31,8 @@
     "w  "
   ],
   "key": {
-    "i": {
-      "tag": "c:ingots/thaumium"
-    },
-    "w": {
-      "tag": "minecraft:planks"
-    }
+    "i": "#c:ingots/thaumium",
+    "w": "#minecraft:planks"
   },
   "result": {
     "id": "spartanweaponryarcana:thaumium_boomerang"

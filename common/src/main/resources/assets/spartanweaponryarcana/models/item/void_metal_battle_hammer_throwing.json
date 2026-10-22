@@ -1,8 +1,6 @@
 {
   "parent": "spartanweaponry:item/base/battle_hammer_throwing",
-  "loader": "spartanweaponry:oil_coated_item",
   "textures": {
-    "coating": "spartanweaponry:item/coating/battle_hammer",
     "layer0": "spartanweaponryarcana:item/void_metal_battle_hammer"
   }
 }

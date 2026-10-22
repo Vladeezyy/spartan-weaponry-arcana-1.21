@@ -12,11 +12,8 @@
       "modid": "botania"
     },
     {
-      "type": "neoforge:not",
-      "value": {
-        "type": "neoforge:tag_empty",
-        "tag": "c:ingots/manasteel"
-      }
+      "type": "spartanweaponry:tag_not_empty",
+      "tag": "c:ingots/manasteel"
     }
   ],
   "fabric:load_conditions": [
@@ -44,12 +41,8 @@
     "w  "
   ],
   "key": {
-    "i": {
-      "tag": "c:ingots/manasteel"
-    },
-    "w": {
-      "item": "botania:livingwood_planks"
-    }
+    "i": "#c:ingots/manasteel",
+    "w": "botania:livingwood_planks"
   },
   "result": {
     "id": "spartanweaponryarcana:manasteel_boomerang"

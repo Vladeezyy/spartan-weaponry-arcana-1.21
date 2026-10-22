@@ -7,7 +7,7 @@ import com.oblivioussp.spartanweaponryarcana.ModSpartanWeaponryArcana;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -24,7 +24,7 @@ public class ModCreativeTabs
 {
 	public static final Registrar<CreativeModeTab> REGISTRY = Registrar.create(Registries.CREATIVE_MODE_TAB);
 
-	private static final TagKey<Item> LIVINGWOOD_TWIGS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "rods/livingwood"));
+	private static final TagKey<Item> LIVINGWOOD_TWIGS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", "rods/livingwood"));
 
 	public static final Registrar.Entry<CreativeModeTab, CreativeModeTab> ARCANA = REGISTRY.register("arcana", () -> 
 		Platform.INSTANCE.creativeTabBuilder()
@@ -46,6 +46,6 @@ public class ModCreativeTabs
 
 	public static boolean hasItems(TagKey<Item> tag)
 	{
-		return BuiltInRegistries.ITEM.getTag(tag).map((set) -> set.size() > 0).orElse(false);
+		return BuiltInRegistries.ITEM.get(tag).map((set) -> set.size() > 0).orElse(false);
 	}
 }

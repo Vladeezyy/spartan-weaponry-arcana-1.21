@@ -8,11 +8,13 @@ import java.util.function.Supplier;
 
 import com.oblivioussp.spartanweaponryarcana.ModSpartanWeaponryArcana;
 
+import com.oblivioussp.spartanweaponry.api.ItemIds;
+
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 /**
  * The entries of one registry, registered by the loader: NeoForge in its RegisterEvent, Fabric right after the mod
@@ -40,7 +42,7 @@ public final class Registrar<R>
 
 	public <T extends R> Entry<R, T> register(String name, Supplier<T> factory)
 	{
-		Entry<R, T> entry = new Entry<>(ResourceKey.create(registry, ResourceLocation.fromNamespaceAndPath(ModSpartanWeaponryArcana.ID, name)), factory);
+		Entry<R, T> entry = new Entry<>(ResourceKey.create(registry, Identifier.fromNamespaceAndPath(ModSpartanWeaponryArcana.ID, name)), factory);
 		entries.add(entry);
 		return entry;
 	}
@@ -83,7 +85,8 @@ public final class Registrar<R>
 		private T create()
 		{
 			if(value == null)
-				value = factory.get();
+				// 1.21.2+: item and block properties take the id of the entry (Spartan Weaponry's ItemIds)
+				value = ItemIds.creating(key, factory);
 			return value;
 		}
 
@@ -91,7 +94,7 @@ public final class Registrar<R>
 		public T get()
 		{
 			if(value == null)
-				throw new IllegalStateException("Registry entry not registered yet: " + key.location());
+				throw new IllegalStateException("Registry entry not registered yet: " + key.identifier());
 			return value;
 		}
 
@@ -105,9 +108,9 @@ public final class Registrar<R>
 			return key;
 		}
 
-		public ResourceLocation getId()
+		public Identifier getId()
 		{
-			return key.location();
+			return key.identifier();
 		}
 
 		@SuppressWarnings("unchecked")
@@ -115,8 +118,8 @@ public final class Registrar<R>
 		{
 			if(holder == null)
 			{
-				Registry<R> reg = (Registry<R>)BuiltInRegistries.REGISTRY.get(key.registry());
-				holder = reg.getHolderOrThrow(key);
+				Registry<R> reg = (Registry<R>)BuiltInRegistries.REGISTRY.getValue(key.registry());
+				holder = reg.getOrThrow(key);
 			}
 			return holder;
 		}

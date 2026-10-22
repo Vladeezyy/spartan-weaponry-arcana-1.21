@@ -8,7 +8,7 @@ import com.oblivioussp.spartanweaponryarcana.init.ModTraits;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
@@ -19,7 +19,7 @@ import net.minecraft.world.item.ItemStack;
 public record TerraBurstPacket() implements CustomPacketPayload
 {
 	public static final TerraBurstPacket INSTANCE = new TerraBurstPacket();
-	public static final CustomPacketPayload.Type<TerraBurstPacket> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(ModSpartanWeaponryArcana.ID, "terra_burst"));
+	public static final CustomPacketPayload.Type<TerraBurstPacket> TYPE = new CustomPacketPayload.Type<>(Identifier.fromNamespaceAndPath(ModSpartanWeaponryArcana.ID, "terra_burst"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, TerraBurstPacket> STREAM_CODEC = StreamCodec.unit(INSTANCE);
 
 	@Override

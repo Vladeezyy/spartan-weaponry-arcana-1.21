@@ -1,0 +1,30 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "spartanweaponry:throwing",
+    "on_true": {
+      "type": "minecraft:condition",
+      "property": "spartanweaponry:empty",
+      "on_true": {
+        "type": "minecraft:model",
+        "model": "spartanweaponry:item/base/tomahawk_empty"
+      },
+      "on_false": {
+        "type": "minecraft:model",
+        "model": "spartanweaponryarcana:item/elementium_tomahawk_throwing"
+      }
+    },
+    "on_false": {
+      "type": "minecraft:condition",
+      "property": "spartanweaponry:empty",
+      "on_true": {
+        "type": "minecraft:model",
+        "model": "spartanweaponry:item/base/tomahawk_empty"
+      },
+      "on_false": {
+        "type": "minecraft:model",
+        "model": "spartanweaponryarcana:item/elementium_tomahawk"
+      }
+    }
+  }
+}

@@ -21,12 +21,8 @@
     "w "
   ],
   "key": {
-    "s": {
-      "tag": "c:strings"
-    },
-    "w": {
-      "item": "botania:dreamwood_twig"
-    }
+    "s": "#c:strings",
+    "w": "botania:dreamwood_twig"
   },
   "result": {
     "id": "spartanweaponryarcana:dreamwood_pole"

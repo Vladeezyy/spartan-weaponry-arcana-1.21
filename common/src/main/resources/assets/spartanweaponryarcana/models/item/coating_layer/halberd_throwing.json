@@ -1,0 +1,6 @@
+{
+  "parent": "spartanweaponry:item/base/halberd_throwing",
+  "textures": {
+    "layer0": "spartanweaponry:item/coating/halberd"
+  }
+}

@@ -19,7 +19,7 @@ public class ArcanaEvents
 	/** After a player's tick (NeoForge PlayerTickEvent.Post; Fabric: each player at the end of the server tick). */
 	public static void onPlayerTick(Player player)
 	{
-		if(player.level().isClientSide || player.isSpectator())
+		if(player.level().isClientSide() || player.isSpectator())
 			return;
 		// Port fix: 1.12.2 counted a global tick counter up once per player per tick, so with several players online
 		// Warped weapons repaired faster and at uneven times; this uses the world time (once per second)

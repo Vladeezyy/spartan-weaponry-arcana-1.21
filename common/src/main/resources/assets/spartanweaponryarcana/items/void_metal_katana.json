@@ -1,0 +1,88 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "spartanweaponry:throwing",
+    "on_true": {
+      "type": "minecraft:condition",
+      "property": "spartanweaponry:oiled",
+      "on_true": {
+        "type": "minecraft:composite",
+        "models": [
+          {
+            "type": "minecraft:model",
+            "model": "spartanweaponryarcana:item/void_metal_katana_throwing"
+          },
+          {
+            "type": "minecraft:model",
+            "model": "spartanweaponryarcana:item/coating_layer/katana_throwing",
+            "tints": [
+              {
+                "type": "spartanweaponry:oil"
+              }
+            ]
+          }
+        ]
+      },
+      "on_false": {
+        "type": "minecraft:model",
+        "model": "spartanweaponryarcana:item/void_metal_katana_throwing"
+      }
+    },
+    "on_false": {
+      "type": "minecraft:condition",
+      "property": "spartanweaponry:blocking",
+      "on_true": {
+        "type": "minecraft:condition",
+        "property": "spartanweaponry:oiled",
+        "on_true": {
+          "type": "minecraft:composite",
+          "models": [
+            {
+              "type": "minecraft:model",
+              "model": "spartanweaponryarcana:item/void_metal_katana_blocking"
+            },
+            {
+              "type": "minecraft:model",
+              "model": "spartanweaponryarcana:item/coating_layer/katana_blocking",
+              "tints": [
+                {
+                  "type": "spartanweaponry:oil"
+                }
+              ]
+            }
+          ]
+        },
+        "on_false": {
+          "type": "minecraft:model",
+          "model": "spartanweaponryarcana:item/void_metal_katana_blocking"
+        }
+      },
+      "on_false": {
+        "type": "minecraft:condition",
+        "property": "spartanweaponry:oiled",
+        "on_true": {
+          "type": "minecraft:composite",
+          "models": [
+            {
+              "type": "minecraft:model",
+              "model": "spartanweaponryarcana:item/void_metal_katana"
+            },
+            {
+              "type": "minecraft:model",
+              "model": "spartanweaponryarcana:item/coating_layer/katana",
+              "tints": [
+                {
+                  "type": "spartanweaponry:oil"
+                }
+              ]
+            }
+          ]
+        },
+        "on_false": {
+          "type": "minecraft:model",
+          "model": "spartanweaponryarcana:item/void_metal_katana"
+        }
+      }
+    }
+  }
+}

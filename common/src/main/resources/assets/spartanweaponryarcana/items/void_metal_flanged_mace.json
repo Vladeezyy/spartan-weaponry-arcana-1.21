@@ -1,0 +1,88 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "spartanweaponry:throwing",
+    "on_true": {
+      "type": "minecraft:condition",
+      "property": "spartanweaponry:oiled",
+      "on_true": {
+        "type": "minecraft:composite",
+        "models": [
+          {
+            "type": "minecraft:model",
+            "model": "spartanweaponryarcana:item/void_metal_flanged_mace_throwing"
+          },
+          {
+            "type": "minecraft:model",
+            "model": "spartanweaponryarcana:item/coating_layer/flanged_mace_throwing",
+            "tints": [
+              {
+                "type": "spartanweaponry:oil"
+              }
+            ]
+          }
+        ]
+      },
+      "on_false": {
+        "type": "minecraft:model",
+        "model": "spartanweaponryarcana:item/void_metal_flanged_mace_throwing"
+      }
+    },
+    "on_false": {
+      "type": "minecraft:condition",
+      "property": "spartanweaponry:blocking",
+      "on_true": {
+        "type": "minecraft:condition",
+        "property": "spartanweaponry:oiled",
+        "on_true": {
+          "type": "minecraft:composite",
+          "models": [
+            {
+              "type": "minecraft:model",
+              "model": "spartanweaponryarcana:item/void_metal_flanged_mace_blocking"
+            },
+            {
+              "type": "minecraft:model",
+              "model": "spartanweaponryarcana:item/coating_layer/flanged_mace_blocking",
+              "tints": [
+                {
+                  "type": "spartanweaponry:oil"
+                }
+              ]
+            }
+          ]
+        },
+        "on_false": {
+          "type": "minecraft:model",
+          "model": "spartanweaponryarcana:item/void_metal_flanged_mace_blocking"
+        }
+      },
+      "on_false": {
+        "type": "minecraft:condition",
+        "property": "spartanweaponry:oiled",
+        "on_true": {
+          "type": "minecraft:composite",
+          "models": [
+            {
+              "type": "minecraft:model",
+              "model": "spartanweaponryarcana:item/void_metal_flanged_mace"
+            },
+            {
+              "type": "minecraft:model",
+              "model": "spartanweaponryarcana:item/coating_layer/flanged_mace",
+              "tints": [
+                {
+                  "type": "spartanweaponry:oil"
+                }
+              ]
+            }
+          ]
+        },
+        "on_false": {
+          "type": "minecraft:model",
+          "model": "spartanweaponryarcana:item/void_metal_flanged_mace"
+        }
+      }
+    }
+  }
+}
