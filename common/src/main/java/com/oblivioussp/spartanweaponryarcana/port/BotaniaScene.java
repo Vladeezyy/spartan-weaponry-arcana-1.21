@@ -88,6 +88,8 @@ final class BotaniaScene
 		return ManaItem.LOOKUP.find(tablet).getMana();
 	}
 
+	private static long manaRepairStart;
+
 	private static void prepareManaRepair(ServerPlayer player)
 	{
 		player.getInventory().clearContent();
@@ -99,6 +101,7 @@ final class BotaniaScene
 		player.getInventory().setItem(6, terrasteel);
 		player.getInventory().setItem(7, tablet(100000));
 		manaBefore = mana(player.getInventory().getItem(7));
+		manaRepairStart = player.level().getGameTime();
 	}
 
 	private static void checkManaRepair(ServerPlayer player)
@@ -106,9 +109,12 @@ final class BotaniaScene
 		int manasteel = player.getInventory().getItem(5).getDamageValue();
 		int terrasteel = player.getInventory().getItem(6).getDamageValue();
 		int mana = mana(player.getInventory().getItem(7));
-		// 40 ticks, one durability per tick (as 1.12.2) while the mana lasts
-		check("Mana Repair: Manasteel repairs with mana from a tablet", manasteel < 20, "50 → " + manasteel);
-		check("Mana Repair: Terrasteel longbow (a ranged weapon) repairs too", terrasteel < 20, "50 → " + terrasteel);
+		// One durability per server tick (as 1.12.2) while the mana lasts. Counted in server ticks: a client under load
+		// (shaders) runs its 40 ticks while the integrated server runs fewer
+		long ticks = player.level().getGameTime() - manaRepairStart;
+		int expected = (int)Math.min(50, Math.max(0, ticks - 5));
+		check("Mana Repair: Manasteel repairs with mana from a tablet", ticks > 10 && 50 - manasteel >= expected, "50 → " + manasteel + " in " + ticks + " server ticks");
+		check("Mana Repair: Terrasteel longbow (a ranged weapon) repairs too", ticks > 10 && 50 - terrasteel >= expected, "50 → " + terrasteel + " in " + ticks + " server ticks");
 		check("Mana Repair: the tablet loses mana", mana < manaBefore, manaBefore + " → " + mana);
 		player.getInventory().clearContent();
 	}

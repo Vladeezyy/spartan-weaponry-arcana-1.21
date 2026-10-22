@@ -125,3 +125,7 @@ Terra Slash packet on an air swing. The oil and NBT changes of Spartan Weaponry 
   jar and the release jar ran together (Fabric happened to load the scenes jar). The task now uses `mods.setFrom`, and the
   production runs were repeated with only the scenes jar: all checks pass. `fabric.mod.json` in the jar is valid JSON
   now (the description's `\n` had become a raw newline when Gradle expanded the template).
+- Later the same day: the compatibility runs had Iris without its shader pack (`shaderPack=` was empty in the copied
+  `iris.properties`). Repeated with Complementary Reimagined r5.9.3 on: 34/34 on both loaders. The Mana Repair check
+  now counts server ticks: under shaders the client ran its 40 ticks while the integrated server ran 17, so the weapons
+  had repaired 17 points (one per server tick, as intended).
