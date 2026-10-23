@@ -185,3 +185,7 @@ NeoForge 26.3.0.95, Fabric Loader 0.19.5 + Fabric API 0.165.0, Forge Config API 
 3.2.1.2+26.3, Java 25, Fabric Loom 1.18. No Botania (no 26.3 version).
 
 - The addon's code needed no change for 26.3 beyond the test scenes (SDL input, the tooltip's new argument).
+- **Verified**: client scene 22 checks on both loaders, all pass; the multiplayer scene on both loaders (5 checks);
+  release jar on a real NeoForge 26.3.0.95 server and a dedicated Fabric server; the scene on a Fabric production
+  client; compatibility runs with Sodium 0.9.3 beta, Iris 1.11.7, Lithium 0.26.2, FerriteCore 9.0.0, Jade 26.3 (Fabric with
+  the Complementary shaders, NeoForge without a shader pack). No stress scene.
