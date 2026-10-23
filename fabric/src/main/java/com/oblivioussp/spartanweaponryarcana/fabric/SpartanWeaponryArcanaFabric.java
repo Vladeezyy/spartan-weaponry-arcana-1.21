@@ -25,7 +25,7 @@ public class SpartanWeaponryArcanaFabric implements ModInitializer
 		ModSpartanWeaponryArcana.init();
 		registerAll();
 
-		PayloadTypeRegistry.playC2S().register(TerraBurstPacket.TYPE, TerraBurstPacket.STREAM_CODEC);
+		PayloadTypeRegistry.serverboundPlay().register(TerraBurstPacket.TYPE, TerraBurstPacket.STREAM_CODEC);
 		// Fabric runs the receivers on the server thread
 		ServerPlayNetworking.registerGlobalReceiver(TerraBurstPacket.TYPE, (packet, ctx) -> TerraBurstPacket.handle(ctx.player()));
 		// NeoForge PlayerTickEvent.Post (the handler works on the server side only)

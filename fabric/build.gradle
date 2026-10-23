@@ -1,6 +1,6 @@
 plugins {
     id 'multiloader-loader'
-    id 'fabric-loom'
+    id 'net.fabricmc.fabric-loom'
 }
 
 repositories {
@@ -10,27 +10,30 @@ repositories {
     }
 }
 
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
-    mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+    implementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     // Spartan Weaponry (required) and the config API it needs
-    modImplementation files("${rootDir}/libs/spartanweaponry-fabric-${spartanweaponry_version}.jar")
-    modLocalRuntime "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${forgeconfigapiport_version}"
+    implementation files("${rootDir}/libs/spartanweaponry-fabric-${spartanweaponry_version}.jar")
+    localRuntime "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${forgeconfigapiport_version}"
     // 1.21.11: no Botania (no 1.21.11 version), so no compat/botania
-    modLocalRuntime "maven.modrinth:modmenu:17.0.1"
+    localRuntime "maven.modrinth:modmenu:18.0.2"
     // Popular client / performance mods for compatibility runs (-Pwith_compat)
     if (project.hasProperty('with_compat')) {
-        modLocalRuntime "maven.modrinth:sodium:${compat_fabric_sodium}"
-        modLocalRuntime "maven.modrinth:iris:${compat_fabric_iris}"
+        localRuntime "maven.modrinth:sodium:${compat_fabric_sodium}"
+        localRuntime "maven.modrinth:iris:${compat_fabric_iris}"
         // Iris' own libraries: Loom does not load the jars inside dev mods (Iris 1.8.8 for Fabric)
-        modLocalRuntime 'org.anarres:jcpp:1.4.14'
-        modLocalRuntime 'org.antlr:antlr4-runtime:4.13.1'
-        modLocalRuntime 'io.github.douira:glsl-transformer:3.0.0-pre3'
-        modLocalRuntime "maven.modrinth:lithium:${compat_fabric_lithium}"
-        modLocalRuntime "maven.modrinth:ferrite-core:${compat_fabric_ferritecore}"
-        modLocalRuntime "maven.modrinth:jade:${compat_fabric_jade}"
+        localRuntime 'org.anarres:jcpp:1.4.14'
+        localRuntime 'org.antlr:antlr4-runtime:4.13.1'
+        localRuntime 'io.github.douira:glsl-transformer:3.0.0-pre3'
+        localRuntime "maven.modrinth:lithium:${compat_fabric_lithium}"
+        localRuntime "maven.modrinth:ferrite-core:${compat_fabric_ferritecore}"
+        localRuntime "maven.modrinth:jade:${compat_fabric_jade}"
     }
 }
 
@@ -70,9 +73,8 @@ tasks.named('jar', Jar).configure {
     exclude 'com/oblivioussp/spartanweaponryarcana/port/**'
 }
 
-// Production runs (tools/prodtest.sh): Minecraft with intermediary names, as players have it. The release jar on a
-// real Fabric server; the scene on a production client from a jar that is the release jar plus port/ (so the code is
-// checked against the intermediary names).
+// Production runs (tools/prodtest.sh): Minecraft as players have it (26.x: no obfuscation, so no names to remap). The
+// release jar on a real Fabric server; the scene on a production client from a jar that is the release jar plus port/
 configurations {
     productionMods { transitive = false }
 }
@@ -83,20 +85,15 @@ dependencies {
 }
 var scenesJar = tasks.register('scenesJar', Jar) {
     from sourceSets.main.output
-    archiveClassifier = 'scenes-dev'
-    destinationDirectory = layout.buildDirectory.dir('devlibs')
-}
-var remapScenesJar = tasks.register('remapScenesJar', net.fabricmc.loom.task.RemapJarTask) {
-    inputFile = scenesJar.flatMap { it.archiveFile }
     archiveClassifier = 'scenes'
 }
 tasks.register('prodScene', net.fabricmc.loom.task.prod.ClientProductionRunTask) {
-    // setFrom: Loom adds remapJar by default, and of two jars with one mod id Fabric loads either
-    mods.setFrom(remapScenesJar, configurations.productionMods)
+    // setFrom: Loom adds the jar by default, and of two jars with one mod id Fabric loads either
+    mods.setFrom(scenesJar, configurations.productionMods)
     jvmArgs.add('-Dspartanweaponryarcana.scene=true')
     runDir = file('run-prod')
 }
 tasks.register('prodServer', net.fabricmc.loom.task.prod.ServerProductionRunTask) {
-    mods.from(tasks.named('remapJar'), configurations.productionMods)
+    mods.from(tasks.named('jar'), configurations.productionMods)
     runDir = file('run-prod-server')
 }

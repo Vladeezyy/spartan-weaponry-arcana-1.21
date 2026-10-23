@@ -1,12 +1,12 @@
 #!/bin/sh
 # Release check: the jars as players have them (1.21.11: no Botania). NeoForge: the release jar (and Spartan
 # Weaponry's from libs/) on the real NeoForge servers in prodtest/*/ (prodtest/serve.sh). Fabric: the release jar on a
-# real Fabric server (:fabric:prodServer), then the client scene on a production client (intermediary names;
+# real Fabric server (:fabric:prodServer), then the client scene on a production client (
 # :fabric:prodScene runs a jar that is the release jar plus port/). Outputs: prodtest/<version>/server*.out,
 # build-prod*-fabric*.log.
 . "$(dirname "$0")/common.sh"
 MOD=spartanweaponryarcana
-./gradlew :neoforge:jar :fabric:remapJar -q || exit 1
+./gradlew :neoforge:jar :fabric:jar -q || exit 1
 VERSION=$(grep '^mod_version=' gradle.properties | cut -d= -f2)+$(grep '^minecraft_version=' gradle.properties | cut -d= -f2)
 JAR=neoforge/build/libs/$MOD-neoforge-$VERSION.jar
 SW=libs/spartanweaponry-neoforge-$(grep '^spartanweaponry_version=' gradle.properties | cut -d= -f2).jar

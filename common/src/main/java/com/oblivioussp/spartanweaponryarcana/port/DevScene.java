@@ -19,7 +19,7 @@ import com.oblivioussp.spartanweaponryarcana.util.Log;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Screenshot;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.PauseScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.TitleScreen;
@@ -154,7 +154,7 @@ public final class DevScene
 			}
 			opened = true;
 			GLFW.glfwSetWindowSize(mc.getWindow().handle(), 1600, 900);
-			LevelSettings settings = new LevelSettings(WORLD, GameType.CREATIVE, false, Difficulty.NORMAL, true, new GameRules(net.minecraft.world.flag.FeatureFlags.DEFAULT_FLAGS), WorldDataConfiguration.DEFAULT);
+			LevelSettings settings = new LevelSettings(WORLD, GameType.CREATIVE, new LevelSettings.DifficultySettings(Difficulty.NORMAL, false, false), true, WorldDataConfiguration.DEFAULT);
 			mc.createWorldOpenFlows().createFreshLevel(WORLD, settings, new WorldOptions(1234L, false, false), WorldPresets::createNormalWorldDimensions, new TitleScreen());
 			return;
 		}
@@ -269,8 +269,8 @@ public final class DevScene
 		server.overworld().getGameRules().set(GameRules.ADVANCE_TIME, false, server);
 		server.overworld().getGameRules().set(GameRules.ADVANCE_WEATHER, false, server);
 		server.overworld().getGameRules().set(GameRules.MOB_GRIEFING, false, server);
-		player.level().setDayTime(6000);
-		player.level().setWeatherParameters(6000, 0, false, false);
+		player.level().getServer().getCommands().performPrefixedCommand(player.level().getServer().createCommandSourceStack().withSuppressedOutput(), "time set 6000");
+		player.level().getServer().getCommands().performPrefixedCommand(player.level().getServer().createCommandSourceStack().withSuppressedOutput(), "weather clear");
 	}
 
 	/** Item frame wall n (0 Botania materials and parts, 1 Thaumcraft and Embers materials): its centre */
@@ -497,7 +497,7 @@ public final class DevScene
 		}
 
 		@Override
-		public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick)
+		public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick)
 		{
 			graphics.fill(0, 0, width, height, 0xFF2B2B33);
 			for(int i = 0; i < stacks.size(); i++)
@@ -507,7 +507,7 @@ public final class DevScene
 				// 1.21.6+: one tooltip per frame is deferred; these are drawn at once, as vanilla's tooltip
 				List<net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent> components = new java.util.ArrayList<>();
 				lines.forEach(line -> components.add(net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent.create(line.getVisualOrderText())));
-				graphics.renderTooltip(font, components, i * width / stacks.size() + 4, 16, net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner.INSTANCE, null);
+				graphics.tooltip(font, components, i * width / stacks.size() + 4, 16, net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner.INSTANCE, null);
 				for(Component line : lines)
 					if(line.getString().contains(ModSpartanWeaponryArcana.ID + "."))
 						Log.info("[scene] CHECK FAIL untranslated tooltip line (" + line.getString() + ")");
