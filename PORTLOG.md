@@ -165,3 +165,16 @@ NeoForge 26.1.2.122, Fabric Loader 0.19.5 + Fabric API 0.155.3, Forge Config API
   runs with Sodium 0.9.2, Iris 1.11.4, Lithium 0.24.7, FerriteCore 9.0.0, Jade (+ ModernFix 5.27.24 on NeoForge): Fabric
   with the Complementary shaders, NeoForge without a shader pack (Iris 1.11.4's NeoForge shadow pass crashes on
   enchanted items). No stress scene (owner's call).
+
+## 26.2 (branch mc/26.2, 2026-10-23, 1.0.3.1+26.2)
+
+NeoForge 26.2.0.93, Fabric Loader 0.19.5 + Fabric API 0.161.0, Forge Config API Port 26.2.1, Spartan Weaponry
+3.2.1.2+26.2, Java 25, Fabric Loom 1.18. No Botania (no 26.2 version), as on 1.21.11 and 26.1.2.
+
+- The addon's code needed no change for 26.2; the test scenes moved to `Minecraft.gui`, and they go on past NeoForge's
+  load warnings screen (the multiplayer scene presses its "Proceed" button, so the quick play connection stays).
+  `bannerFile` instead of the deprecated `logoFile`.
+- **Verified**: client scene 22 checks on both loaders, all pass; the multiplayer scene on both loaders (5 checks);
+  release jar on a real NeoForge 26.2.0.93 server and a dedicated Fabric server; the scene on a Fabric production
+  client; compatibility runs with Sodium 0.9.2, Iris 1.11.4, Lithium 0.25.3, FerriteCore 9.0.0, Jade 26.2 (Fabric with
+  the Complementary shaders, NeoForge without a shader pack). No stress scene (owner's call).

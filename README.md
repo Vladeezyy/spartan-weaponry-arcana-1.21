@@ -111,10 +111,9 @@ The full list, with the reasons and what 1.21 changed, is in **[PORTLOG.md](PORT
   damage, durability, enchanting table, Warped; a client swinging a Terrasteel greatsword on a dedicated server.
 - **Release jar** on a real NeoForge 26.2.0.93 server and a dedicated Fabric server; the scene on a Fabric production
   client.
-- **Compatibility**: Sodium 0.9.2, Iris 1.11.4, Lithium 0.24.7, FerriteCore 9.0.0, Jade, JEI 29, ModernFix 5.27
-  (NeoForge). On Fabric with the Complementary shaders on; on NeoForge with the shader pack off, as Iris 1.11.4 for
+- **Compatibility**: Sodium 0.9.2, Iris 1.11.4, Lithium 0.25.3, FerriteCore 9.0.0, Jade, JEI 30. On Fabric with the Complementary shaders on; on NeoForge with the shader pack off, as Iris 1.11.4 for
   NeoForge crashes on any enchanted item in hand (vanilla's too) in its shadow pass.
-- Not on 26.2: Botania, EMI (no 26.2 versions).
+- Not on 26.2: Botania, EMI, ModernFix (no 26.2 versions).
 
 ## ❤️ Credits
 
@@ -234,10 +233,9 @@ Arcana добавляет все виды оружия Spartan Weaponry из м�
   урон, прочность, стол зачарований, «Искажённое»; клиент с двуручным мечом из террастали на выделенном сервере.
 - **Release jar** на настоящем сервере NeoForge 26.2.0.93 и на выделенном сервере Fabric; сцена на production-клиенте
   Fabric.
-- **Совместимость**: Sodium 0.9.2, Iris 1.11.4, Lithium 0.24.7, FerriteCore 9.0.0, Jade, JEI 29, ModernFix 5.27
-  (NeoForge). На Fabric — с шейдерами Complementary; на NeoForge — без шейдерпака: Iris 1.11.4 для NeoForge падает в
+- **Совместимость**: Sodium 0.9.2, Iris 1.11.4, Lithium 0.25.3, FerriteCore 9.0.0, Jade, JEI 30. На Fabric — с шейдерами Complementary; на NeoForge — без шейдерпака: Iris 1.11.4 для NeoForge падает в
   проходе теней с любым зачарованным предметом в руке (и ванильным тоже).
-- Нет под 26.2: Botania, EMI.
+- Нет под 26.2: Botania, EMI, ModernFix.
 
 </details>
 

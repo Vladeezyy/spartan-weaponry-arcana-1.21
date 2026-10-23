@@ -1,6 +1,6 @@
 === build-compat-fabric.out: 22 checks, DONE, failed checks: 0
 --- errors
-   1 java.lang.RuntimeException: Unknown variable: BIOME_SULFUR_CAVES
+   2 [Download-1/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
    1 [Server thread/ERROR] (Minecraft) Couldn't load tag minecraft:librarian/level_5 as it is missing following references: minecraft:librarian/5/emerald_and_book_desert_enchanted_book (from trade_rebalance), minecraft:librarian/5/emerald_and_book_jungle_enchanted_book (from trade_rebalance), minecraft:l
    1 [Server thread/ERROR] (Minecraft) Couldn't load tag minecraft:librarian/level_3 as it is missing following references: minecraft:librarian/3/emerald_and_book_desert_enchanted_book (from trade_rebalance), minecraft:librarian/3/emerald_and_book_jungle_enchanted_book (from trade_rebalance), minecraft:l
    1 [Server thread/ERROR] (Minecraft) Couldn't load tag minecraft:librarian/level_2 as it is missing following references: minecraft:librarian/2/emerald_and_book_desert_enchanted_book (from trade_rebalance), minecraft:librarian/2/emerald_and_book_jungle_enchanted_book (from trade_rebalance), minecraft:l
@@ -10,4 +10,4 @@
    1 [Server thread/ERROR] (Minecraft) Couldn't load tag minecraft:armorer/level_3 as it is missing following references: minecraft:armorer/3/emerald_bell (from trade_rebalance)
    1 [Server thread/ERROR] (Minecraft) Couldn't load tag minecraft:armorer/level_2 as it is missing following references: minecraft:armorer/2/emerald_iron_boots_group_1 (from trade_rebalance), minecraft:armorer/2/emerald_iron_chestplate_group_1 (from trade_rebalance), minecraft:armorer/2/emerald_iron_leg
    1 [Server thread/ERROR] (Minecraft) Couldn't load tag minecraft:armorer/level_1 as it is missing following references: minecraft:armorer/1/iron_ingot_emerald (from trade_rebalance)
-   1 [IO-Worker-1/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
+   1 [Download-1/ERROR] (Minecraft) Failed to retrieve profile key pair
