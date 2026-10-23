@@ -1,0 +1,12 @@
+CHECK OK   holding a Terrasteel greatsword (1 spartanweaponryarcana:terrasteel_greatsword)
+CHECK OK   golem in front ()
+CHECK OK   no mana burst without Botania (0)
+CHECK OK   still connected ()
+CHECK OK   still connected after four swings ()
+DONE, failed checks: 0
+--- server errors
+   1 [Server thread/INFO] (Minecraft) Dev lost connection: Disconnected
+--- client errors
+   1 com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 401
+   1 [Download-3/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
+   1 [Download-3/ERROR] (Minecraft) Failed to retrieve profile key pair

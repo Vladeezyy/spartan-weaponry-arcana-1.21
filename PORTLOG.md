@@ -150,3 +150,18 @@ NeoForge 21.11.48, Fabric Loader 0.19.5 + Fabric API 0.141.6, Forge Config API P
   21.11.48 server and a dedicated Fabric server; the scene on a Fabric production client; compatibility runs with
   Sodium 0.8.14, Iris 1.10.8, Lithium, FerriteCore, Jade (Fabric with the Complementary shaders, NeoForge without a
   shader pack: Iris 1.10.8's NeoForge shadow pass crashes on enchanted items). No stress scene (owner's call).
+
+## 26.1.2 (branch mc/26.1.2, 2026-10-23, 1.0.3.1+26.1.2)
+
+NeoForge 26.1.2.122, Fabric Loader 0.19.5 + Fabric API 0.155.3, Forge Config API Port 26.1.5, Spartan Weaponry
+3.2.1.2+26.1.2, Java 25, Fabric Loom 1.18 (26.x has no obfuscation: no mappings, no remapped jar). No Botania, as on
+1.21.11: Botania has no 26.1.2 version.
+
+- The code changes are those of Spartan Weaponry's 26.1.2 port that reach the addon: `CreativeModeTab.Output` is
+  protected in vanilla (a compile-time access transformer for the common project), Fabric API 0.155 names, the test
+  scenes on the 26.1 world settings and the extracting tooltip.
+- **Verified**: client scene 22 checks on both loaders, all pass; the multiplayer scene on both loaders; release jar on a
+  real NeoForge 26.1.2.122 server and a dedicated Fabric server; the scene on a Fabric production client; compatibility
+  runs with Sodium 0.9.2, Iris 1.11.4, Lithium 0.24.7, FerriteCore 9.0.0, Jade (+ ModernFix 5.27.24 on NeoForge): Fabric
+  with the Complementary shaders, NeoForge without a shader pack (Iris 1.11.4's NeoForge shadow pass crashes on
+  enchanted items). No stress scene (owner's call).

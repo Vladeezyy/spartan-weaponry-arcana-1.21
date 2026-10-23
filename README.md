@@ -2,19 +2,19 @@
 
 <img src="docs/images/logo.png" width="320" alt="Spartan Weaponry: Arcana logo">
 
-# Spartan Weaponry: Arcana — NeoForge & Fabric 1.21.11
+# Spartan Weaponry: Arcana — NeoForge & Fabric 26.1.2
 
 **Magic metals for the Spartan arsenal**
 
-[![Minecraft 1.21.11](https://img.shields.io/badge/Minecraft-1.21.11-3c8527)](https://www.minecraft.net)
-[![NeoForge 21.11](https://img.shields.io/badge/NeoForge-21.11.48%2B-e0682b)](https://neoforged.net)
+[![Minecraft 26.1.2](https://img.shields.io/badge/Minecraft-26.1.2-3c8527)](https://www.minecraft.net)
+[![NeoForge 26.1](https://img.shields.io/badge/NeoForge-26.1.2.122%2B-e0682b)](https://neoforged.net)
 [![Fabric 0.19](https://img.shields.io/badge/Fabric-0.19.5%2B-dbd0b4)](https://fabricmc.net)
 [![Requires Spartan Weaponry](https://img.shields.io/badge/requires-Spartan%20Weaponry%203.2.1.2%2B-8a2be2)](#-installation)
 [![License GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue)](LICENSE)
 
 An unofficial port of **Spartan Weaponry: Arcana** beta-1.0.3 by **ObliviousSpartan** from Minecraft 1.12.2 to
-**NeoForge and Fabric 1.21.11**, as an addon of our [Spartan Weaponry port](https://github.com/Vladeezyy/spartan-weaponry-1.21). This is the
-1.21.11 branch; 1.21.1 (with Botania) is on [`main`](../../tree/main).
+**NeoForge and Fabric 26.1.2**, as an addon of our [Spartan Weaponry port](https://github.com/Vladeezyy/spartan-weaponry-1.21). This is the
+26.1.2 branch; 1.21.1 (with Botania) is on [`main`](../../tree/main), 1.21.11 on [`mc/1.21.11`](../../tree/mc/1.21.11).
 
 </div>
 
@@ -62,23 +62,23 @@ their own mods.
 
 **NeoForge**
 
-1. Install **NeoForge 21.11.48** or newer for Minecraft **1.21.11**.
-2. Install **[Spartan Weaponry 3.2.1.2+1.21.11](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** or newer.
-3. Put `spartanweaponryarcana-neoforge-1.0.3.1+1.21.11.jar` from the [releases](../../releases) into `mods`.
+1. Install **NeoForge 26.1.2.122** or newer for Minecraft **26.1.2**.
+2. Install **[Spartan Weaponry 3.2.1.2+26.1.2](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** or newer.
+3. Put `spartanweaponryarcana-neoforge-1.0.3.1+26.1.2.jar` from the [releases](../../releases) into `mods`.
 
 **Fabric**
 
-1. Install **Fabric Loader 0.19.5** or newer for Minecraft **1.21.11**.
-2. Install **[Spartan Weaponry 3.2.1.2+1.21.11](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** for
+1. Install **Fabric Loader 0.19.5** or newer for Minecraft **26.1.2**.
+2. Install **[Spartan Weaponry 3.2.1.2+26.1.2](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** for
    Fabric or newer, with what it needs (Fabric API, Forge Config API Port).
-3. Put `spartanweaponryarcana-fabric-1.0.3.1+1.21.11.jar` from the [releases](../../releases) into `mods`.
+3. Put `spartanweaponryarcana-fabric-1.0.3.1+26.1.2.jar` from the [releases](../../releases) into `mods`.
 
 Both: required on the client and the server. Optional: **Botania** (Manasteel, Terrasteel, Elementium, the abilities
 and the lexicon), any mod adding Thaumium, Void Metal or Dawnstone ingots, **JEI** / **EMI**.
 The weapons follow Spartan Weaponry's per-type settings (`config/spartanweaponry-common.toml`: speed, damage,
 disabled types).
 
-> **Botania has no 1.21.11 version**, so this 1.21.11 build has no Botania integration: the Manasteel, Terrasteel and
+> **Botania has no 26.1.2 version**, so this 26.1.2 build has no Botania integration: the Manasteel, Terrasteel and
 > Elementium weapons exist but cannot be crafted, and Mana Repair, Terra Burst, Pixielated and the lexicon entries do
 > nothing. The Thaumium, Void Metal and Dawnstone weapons work as soon as a mod or data pack adds their ingots. With no
 > such material the creative tab is empty, as in the original. For Botania, use the 1.21.1 version.
@@ -106,22 +106,22 @@ The full list, with the reasons and what 1.21 changed, is in **[PORTLOG.md](PORT
 
 ## ✅ Tested
 
-- **Functional** (22 checks on NeoForge 21.11.48 and on Fabric Loader 0.19.5 with Fabric API 0.141.6, Spartan Weaponry
-  3.2.1.2+1.21.11): items and their looks, recipes by tag (and a data pack adding Thaumium ingots), the creative tab,
+- **Functional** (22 checks on NeoForge 26.1.2.122 and on Fabric Loader 0.19.5 with Fabric API 0.155.3, Spartan Weaponry
+  3.2.1.2+26.1.2): items and their looks, recipes by tag (and a data pack adding Thaumium ingots), the creative tab,
   damage, durability, enchanting table, Warped; a client swinging a Terrasteel greatsword on a dedicated server.
-- **Release jar** on a real NeoForge 21.11.48 server and a dedicated Fabric server; the scene on a Fabric production
+- **Release jar** on a real NeoForge 26.1.2.122 server and a dedicated Fabric server; the scene on a Fabric production
   client.
-- **Compatibility**: Sodium 0.8.14, Iris 1.10.8, Lithium 0.21.4, FerriteCore 8.2.0, Jade, JEI 27. On Fabric with the
-  Complementary shaders on; on NeoForge with the shader pack off, as Iris 1.10.8 for NeoForge crashes on any enchanted
-  item in hand (vanilla's too) in its shadow pass.
-- Not on 1.21.11: Botania, EMI, ModernFix (no 1.21.11 versions).
+- **Compatibility**: Sodium 0.9.2, Iris 1.11.4, Lithium 0.24.7, FerriteCore 9.0.0, Jade, JEI 29, ModernFix 5.27
+  (NeoForge). On Fabric with the Complementary shaders on; on NeoForge with the shader pack off, as Iris 1.11.4 for
+  NeoForge crashes on any enchanted item in hand (vanilla's too) in its shadow pass.
+- Not on 26.1.2: Botania, EMI (no 26.1.2 versions).
 
 ## ❤️ Credits
 
 - **Spartan Weaponry: Arcana** and **Spartan Weaponry** — made by **ObliviousSpartan** ·
   [source](https://github.com/ObliviousSpartan/SpartanWeaponryArcana). All the content, art and ideas are theirs.
 - **Botania** by Vazkii and contributors: the Terra Burst follows its Terra Blade.
-- **Port** to NeoForge and Fabric 1.21.1 and 1.21.11 — [Vladeezyy](https://github.com/Vladeezyy).
+- **Port** to NeoForge and Fabric 1.21.1, 1.21.11 and 26.1.2 — [Vladeezyy](https://github.com/Vladeezyy).
 - Bugs of **this port**: [issues](../../issues). Please don't report port bugs to the original author.
 
 ### License
@@ -141,8 +141,8 @@ Please download the mod only from the official pages.
 **Магические металлы для спартанского арсенала**
 
 Неофициальный порт мода **Spartan Weaponry: Arcana** beta-1.0.3 от **ObliviousSpartan** с Minecraft 1.12.2 на
-**NeoForge и Fabric 1.21.11** — аддон к нашему [порту Spartan Weaponry](https://github.com/Vladeezyy/spartan-weaponry-1.21). Это ветка 1.21.11;
-1.21.1 (с Botania) — в [`main`](../../tree/main).
+**NeoForge и Fabric 26.1.2** — аддон к нашему [порту Spartan Weaponry](https://github.com/Vladeezyy/spartan-weaponry-1.21). Это ветка 26.1.2;
+1.21.1 (с Botania) — в [`main`](../../tree/main), 1.21.11 — в [`mc/1.21.11`](../../tree/mc/1.21.11).
 
 <details>
 <summary><b>⚔️ О моде</b></summary>
@@ -179,24 +179,24 @@ Arcana добавляет все виды оружия Spartan Weaponry из м�
 
 **NeoForge**
 
-1. Установите **NeoForge 21.11.48** или новее для Minecraft **1.21.11**.
-2. Установите **[Spartan Weaponry 3.2.1.2+1.21.11](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** или
+1. Установите **NeoForge 26.1.2.122** или новее для Minecraft **26.1.2**.
+2. Установите **[Spartan Weaponry 3.2.1.2+26.1.2](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** или
    новее.
-3. Положите `spartanweaponryarcana-neoforge-1.0.3.1+1.21.11.jar` из [релизов](../../releases) в папку `mods`.
+3. Положите `spartanweaponryarcana-neoforge-1.0.3.1+26.1.2.jar` из [релизов](../../releases) в папку `mods`.
 
 **Fabric**
 
-1. Установите **Fabric Loader 0.19.5** или новее для Minecraft **1.21.11**.
-2. Установите **[Spartan Weaponry 3.2.1.2+1.21.11](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** для
+1. Установите **Fabric Loader 0.19.5** или новее для Minecraft **26.1.2**.
+2. Установите **[Spartan Weaponry 3.2.1.2+26.1.2](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** для
    Fabric или новее, с тем, что ему нужно (Fabric API, Forge Config API Port).
-3. Положите `spartanweaponryarcana-fabric-1.0.3.1+1.21.11.jar` из [релизов](../../releases) в папку `mods`.
+3. Положите `spartanweaponryarcana-fabric-1.0.3.1+26.1.2.jar` из [релизов](../../releases) в папку `mods`.
 
 Для обоих: нужен и на клиенте, и на сервере. По желанию: **Botania** (манасталь, террасталь, элементий, способности и
 лексикон), любой мод со слитками таумиума, пустотного металла или рассветного камня, **JEI** / **EMI**.
 На оружие действуют настройки Spartan Weaponry по видам оружия (`config/spartanweaponry-common.toml`: скорость,
 урон, отключение видов).
 
-> **У Botania нет версии под 1.21.11**, поэтому в этой сборке нет интеграции с Botania: оружие из манастали,
+> **У Botania нет версии под 26.1.2**, поэтому в этой сборке нет интеграции с Botania: оружие из манастали,
 > террастали и элементия есть, но не крафтится, а починка маной, терра-вспышка, «Пикси» и статьи лексикона не
 > работают. Оружие из таумиума, пустотного металла и рассветного камня работает, как только мод или датапак добавит
 > их слитки. Без таких материалов вкладка творчества пуста, как в оригинале. Для Botania берите версию 1.21.1.
@@ -229,15 +229,15 @@ Arcana добавляет все виды оружия Spartan Weaponry из м�
 <details>
 <summary><b>✅ Проверено</b></summary>
 
-- **Функционально** (22 проверки на NeoForge 21.11.48 и на Fabric Loader 0.19.5 с Fabric API 0.141.6, Spartan
-  Weaponry 3.2.1.2+1.21.11): предметы и их вид, рецепты по тегам (и датапак со слитками таумиума), вкладка творчества,
+- **Функционально** (22 проверки на NeoForge 26.1.2.122 и на Fabric Loader 0.19.5 с Fabric API 0.155.3, Spartan
+  Weaponry 3.2.1.2+26.1.2): предметы и их вид, рецепты по тегам (и датапак со слитками таумиума), вкладка творчества,
   урон, прочность, стол зачарований, «Искажённое»; клиент с двуручным мечом из террастали на выделенном сервере.
-- **Release jar** на настоящем сервере NeoForge 21.11.48 и на выделенном сервере Fabric; сцена на production-клиенте
+- **Release jar** на настоящем сервере NeoForge 26.1.2.122 и на выделенном сервере Fabric; сцена на production-клиенте
   Fabric.
-- **Совместимость**: Sodium 0.8.14, Iris 1.10.8, Lithium 0.21.4, FerriteCore 8.2.0, Jade, JEI 27. На Fabric — с
-  шейдерами Complementary; на NeoForge — без шейдерпака: Iris 1.10.8 для NeoForge падает в проходе теней с любым
-  зачарованным предметом в руке (и ванильным тоже).
-- Нет под 1.21.11: Botania, EMI, ModernFix.
+- **Совместимость**: Sodium 0.9.2, Iris 1.11.4, Lithium 0.24.7, FerriteCore 9.0.0, Jade, JEI 29, ModernFix 5.27
+  (NeoForge). На Fabric — с шейдерами Complementary; на NeoForge — без шейдерпака: Iris 1.11.4 для NeoForge падает в
+  проходе теней с любым зачарованным предметом в руке (и ванильным тоже).
+- Нет под 26.1.2: Botania, EMI.
 
 </details>
 
@@ -247,7 +247,7 @@ Arcana добавляет все виды оружия Spartan Weaponry из м�
 - **Spartan Weaponry: Arcana** и **Spartan Weaponry** — автор **ObliviousSpartan** ·
   [исходники](https://github.com/ObliviousSpartan/SpartanWeaponryArcana). Всё содержимое, графика и идеи — их.
 - **Botania** — Vazkii и участники: терра-вспышка повторяет Терра-клинок.
-- **Порт** на NeoForge и Fabric 1.21.1 и 1.21.11 — [Vladeezyy](https://github.com/Vladeezyy).
+- **Порт** на NeoForge и Fabric 1.21.1, 1.21.11 и 26.1.2 — [Vladeezyy](https://github.com/Vladeezyy).
 - Баги **этого порта**: [issues](../../issues). Пожалуйста, не пишите о багах порта автору оригинала.
 
 Как и оригинал, порт распространяется по **GNU GPL 3.0 или новее** ([LICENSE](LICENSE)).

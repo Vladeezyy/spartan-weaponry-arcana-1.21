@@ -14,6 +14,7 @@ for dir in prodtest/*/; do
 	[ -f "$dir/run.sh" ] || continue
 	find "$dir/mods" -iname "*weaponry*.jar" -delete 2>/dev/null
 	find "$dir/mods" -iname "botania*.jar" -o -iname "Patchouli*.jar" -o -iname "curios*.jar" 2>/dev/null | xargs rm -f
+	mkdir -p "$dir/mods"
 	cp "$JAR" "$SW" "$dir/mods/"
 	echo "=== NeoForge server $(grep -o 'neoforge/[0-9.]*' "$dir/run.sh" | head -1): $(ls "$dir/mods" | tr '\n' ' ')"
 	(cd "$dir" && sh ../serve.sh && cp server.out server-alone.out)
