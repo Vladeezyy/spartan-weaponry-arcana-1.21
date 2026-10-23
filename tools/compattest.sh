@@ -1,12 +1,12 @@
 #!/bin/sh
 # Compatibility run on LOADER=neoforge|fabric: the client scene with -Pwith_compat (Sodium, Iris with a shader pack
-# from run/shaderpacks, Lithium, FerriteCore, Jade, ModernFix on NeoForge; 26.1.2 has no Botania or EMI). Output: build-compat-<loader>.out,
+# from run/shaderpacks, Lithium, FerriteCore, Jade; 26.3 has no Botania, ModernFix or EMI). Output: build-compat-<loader>.out,
 # screenshots in build/compat-<loader>/.
 . "$(dirname "$0")/common.sh"
 mkdir -p "$RUN/shaderpacks" "$RUN/config"
 cp run/shaderpacks/*.zip "$RUN/shaderpacks/" 2>/dev/null
 [ -f run/config/iris.properties ] && cp run/config/iris.properties "$RUN/config/"
-# NO_SHADERS=1: Iris without its shader pack (Iris 1.10.8 for NeoForge 1.21.11 and 1.11.4 for 26.1.2 crash in their shadow pass on any
+# NO_SHADERS=1: Iris without its shader pack (Iris 1.10.8 for NeoForge 1.21.11 and 1.11.4 for 26.1.2 crash in their shadow pass, 1.11.7 for 26.3 in its render passes on any
 # enchanted item in hand, vanilla's too: "Missing sampler Sampler1")
 [ -n "$NO_SHADERS" ] && sed -i.bak 's/^enableShaders=.*/enableShaders=false/' "$RUN/config/iris.properties" && rm -f "$RUN/config/iris.properties.bak"
 # NeoForge 21.11 wraps the GPU device in its validation layer in dev runs; Sodium and Iris cast it to GlDevice and crash

@@ -1,8 +1,6 @@
 === build-compat-neoforge.out: 22 checks, DONE, failed checks: 0
 --- errors
    1 [main/WARN] [mixin/]: Error loading class: mekanism/client/render/lib/effect/BillboardingEffectRenderer (java.lang.ClassNotFoundException: mekanism.client.render.lib.effect.BillboardingEffectRenderer)
-   1 [main/WARN] [mixin/]: Error loading class: mekanism/client/render/entity/RenderFlame (java.lang.ClassNotFoundException: mekanism.client.render.entity.RenderFlame)
-   1 [main/WARN] [mixin/]: Error loading class: mekanism/client/render/armor/MekaSuitArmor (java.lang.ClassNotFoundException: mekanism.client.render.armor.MekaSuitArmor)
    1 [main/WARN] [mixin/]: Error loading class: com/portingdeadmods/cable_facades/events/GameClientEvents$2 (java.lang.ClassNotFoundException: com.portingdeadmods.cable_facades.events.GameClientEvents$2)
    1 [main/WARN] [mixin/]: Error loading class: com/direwolf20/justdirethings/client/renderers/OurRenderTypes (java.lang.ClassNotFoundException: com.direwolf20.justdirethings.client.renderers.OurRenderTypes)
    1 [main/WARN] [mixin/]: Error loading class: blusunrize/immersiveengineering/client/utils/IEGLShaders (java.lang.ClassNotFoundException: blusunrize.immersiveengineering.client.utils.IEGLShaders)
@@ -11,3 +9,5 @@
    1 [Server thread/ERROR] [minecraft/TagLoader]: Couldn't load tag minecraft:librarian/level_2 as it is missing following references: 
    1 [Server thread/ERROR] [minecraft/TagLoader]: Couldn't load tag minecraft:librarian/level_1 as it is missing following references: 
    1 [Server thread/ERROR] [minecraft/TagLoader]: Couldn't load tag minecraft:armorer/level_5 as it is missing following references: 
+   1 [Server thread/ERROR] [minecraft/TagLoader]: Couldn't load tag minecraft:armorer/level_4 as it is missing following references: 
+   1 [Server thread/ERROR] [minecraft/TagLoader]: Couldn't load tag minecraft:armorer/level_3 as it is missing following references: 

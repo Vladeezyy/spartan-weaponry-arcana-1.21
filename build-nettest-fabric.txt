@@ -8,7 +8,4 @@ DONE, failed checks: 0
 --- server errors
    1 [Server thread/INFO] (Minecraft) Dev lost connection: Disconnected
 --- client errors
-   1 [Download-6/ERROR] (Minecraft) Failed to retrieve profile key pair
-   1 [Download-3/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
-   1 MinecraftClientHttpException[type=HTTP_ERROR, status=401, response=ErrorResponse[path=/player/certificates, error=null, errorMessage=null, details=null]]
-   1 	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.buildHttpException(MinecraftClient.java:170)
+   1 [Download-1/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
