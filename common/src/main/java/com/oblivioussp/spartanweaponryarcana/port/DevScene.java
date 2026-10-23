@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import org.lwjgl.glfw.GLFW;
 
 import com.mojang.datafixers.util.Pair;
 import com.oblivioussp.spartanweaponry.api.WeaponMaterial;
@@ -160,7 +159,7 @@ public final class DevScene
 				return;
 			}
 			opened = true;
-			GLFW.glfwSetWindowSize(mc.getWindow().handle(), 1600, 900);
+			mc.getWindow().setWindowed(1600, 900);
 			LevelSettings settings = new LevelSettings(WORLD, GameType.CREATIVE, new LevelSettings.DifficultySettings(Difficulty.NORMAL, false, false), true, WorldDataConfiguration.DEFAULT);
 			mc.createWorldOpenFlows().createFreshLevel(WORLD, settings, new WorldOptions(1234L, false, false), WorldPresets::createNormalWorldDimensions, new TitleScreen());
 			return;
@@ -514,7 +513,7 @@ public final class DevScene
 				// 1.21.6+: one tooltip per frame is deferred; these are drawn at once, as vanilla's tooltip
 				List<net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent> components = new java.util.ArrayList<>();
 				lines.forEach(line -> components.add(net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent.create(line.getVisualOrderText())));
-				graphics.tooltip(font, components, i * width / stacks.size() + 4, 16, net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner.INSTANCE, null);
+				graphics.tooltip(font, components, i * width / stacks.size() + 4, 16, net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner.INSTANCE, null, false);
 				for(Component line : lines)
 					if(line.getString().contains(ModSpartanWeaponryArcana.ID + "."))
 						Log.info("[scene] CHECK FAIL untranslated tooltip line (" + line.getString() + ")");

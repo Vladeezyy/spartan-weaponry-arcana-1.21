@@ -22,7 +22,7 @@ dependencies {
     implementation files("${rootDir}/libs/spartanweaponry-fabric-${spartanweaponry_version}.jar")
     localRuntime "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${forgeconfigapiport_version}"
     // 1.21.11: no Botania (no 1.21.11 version), so no compat/botania
-    localRuntime "maven.modrinth:modmenu:20.0.3"
+    localRuntime "maven.modrinth:modmenu:21.0.0"
     // Popular client / performance mods for compatibility runs (-Pwith_compat)
     if (project.hasProperty('with_compat')) {
         localRuntime "maven.modrinth:sodium:${compat_fabric_sodium}"
