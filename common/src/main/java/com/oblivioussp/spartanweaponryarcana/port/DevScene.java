@@ -78,7 +78,7 @@ public final class DevScene
 	{
 		boolean botania = BotaniaCompat.isLoaded();
 		at(40, mc -> server(mc, DevScene::setup));
-		at(45, mc -> mc.options.hideGui = true);
+		at(45, mc -> setHudHidden(mc, true));
 		at(60, mc -> server(mc, DevScene::buildStage));
 		at(160, mc -> server(mc, p -> look(p, wall(0))));
 		at(220, mc -> shot(mc, "wall_botania"));
@@ -86,22 +86,22 @@ public final class DevScene
 		at(285, mc -> shot(mc, "wall_thaumcraft_embers"));
 		// Creative tab and tooltips
 		at(290, mc -> {
-			mc.options.hideGui = false;
-			mc.getToastManager().clear();
-			mc.setScreen(new CreativeModeInventoryScreen(mc.player, mc.player.connection.enabledFeatures(), true));
+			setHudHidden(mc, false);
+			mc.gui.toastManager().clear();
+			mc.gui.setScreen(new CreativeModeInventoryScreen(mc.player, mc.player.connection.enabledFeatures(), true));
 		});
 		at(300, mc -> selectTab(mc, ModCreativeTabs.ARCANA.get()));
 		at(320, mc -> shot(mc, "creative_tab"));
-		at(325, mc -> mc.setScreen(new TooltipScreen(List.of(weapon(ModItems.TERRASTEEL, "greatsword"), weapon(ModItems.ELEMENTIUM, "katana")))));
+		at(325, mc -> mc.gui.setScreen(new TooltipScreen(List.of(weapon(ModItems.TERRASTEEL, "greatsword"), weapon(ModItems.ELEMENTIUM, "katana")))));
 		at(332, mc -> shot(mc, "tooltip"));
-		at(335, mc -> mc.setScreen(new TooltipScreen(List.of(weapon(ModItems.MANASTEEL, "heavy_crossbow"), weapon(ModItems.VOIDMETAL, "longsword")))));
+		at(335, mc -> mc.gui.setScreen(new TooltipScreen(List.of(weapon(ModItems.MANASTEEL, "heavy_crossbow"), weapon(ModItems.VOIDMETAL, "longsword")))));
 		at(342, mc -> shot(mc, "tooltip_2"));
-		at(345, mc -> { mc.setScreen(null); mc.options.hideGui = true; });
+		at(345, mc -> { mc.gui.setScreen(null); setHudHidden(mc, true); });
 		// First person
 		at(350, mc -> server(mc, DevScene::firstPerson));
-		at(375, mc -> mc.options.hideGui = false);
+		at(375, mc -> setHudHidden(mc, false));
 		at(380, mc -> shot(mc, "first_person"));
-		at(382, mc -> mc.options.hideGui = true);
+		at(382, mc -> setHudHidden(mc, true));
 		// Server side checks
 		at(385, mc -> server(mc, DevScene::checkRegistry));
 		at(390, mc -> server(mc, DevScene::checkRecipes));
@@ -132,17 +132,24 @@ public final class DevScene
 		if(!ENABLED)
 			return;
 		Minecraft mc = Minecraft.getInstance();
-		if(!opened && mc.screen instanceof net.minecraft.client.gui.screens.AccessibilityOnboardingScreen)
+		if(!opened && mc.gui.screen() instanceof net.minecraft.client.gui.screens.AccessibilityOnboardingScreen)
 		{
 			mc.options.onboardAccessibility = false;
 			mc.options.save();
-			mc.setScreen(new TitleScreen());
+			mc.gui.setScreen(new TitleScreen());
 			return;
 		}
 		// The language switch reloads the resources; the world is created after that, not during it
-		if(!opened && mc.getOverlay() != null)
+		if(!opened && mc.gui.overlay() != null)
 			return;
-		if(!opened && mc.screen instanceof TitleScreen)
+		// NeoForge 26.2: load warnings (e.g. another mod's deprecated logoFile) open LoadingErrorScreen before the menu
+		if(!opened && mc.gui.screen() != null && mc.gui.screen().getClass().getSimpleName().equals("LoadingErrorScreen"))
+		{
+			Log.info("[scene] NeoForge load warnings screen, going on to the main menu");
+			mc.gui.setScreen(new TitleScreen());
+			return;
+		}
+		if(!opened && mc.gui.screen() instanceof TitleScreen)
 		{
 			if(!mc.options.languageCode.equals(LANG))
 			{
@@ -162,9 +169,9 @@ public final class DevScene
 			return;
 		mc.options.pauseOnLostFocus = false;
 		mc.getTutorial().setStep(net.minecraft.client.tutorial.TutorialSteps.NONE);
-		mc.getToastManager().clear();
-		if(mc.screen instanceof PauseScreen)
-			mc.setScreen(null);
+		mc.gui.toastManager().clear();
+		if(mc.gui.screen() instanceof PauseScreen)
+			mc.gui.setScreen(null);
 		tick++;
 		for(Pair<Integer, Consumer<Minecraft>> step : STEPS)
 		{
@@ -210,12 +217,12 @@ public final class DevScene
 
 	static void shot(Minecraft mc, String name)
 	{
-		Screenshot.grab(mc.gameDirectory, "scene_" + name + ".png", mc.getMainRenderTarget(), 1, c -> Log.info("[scene] " + c.getString()));
+		Screenshot.grab(mc.gameDirectory, "scene_" + name + ".png", mc.gameRenderer.mainRenderTarget(), 1, c -> Log.info("[scene] " + c.getString()));
 	}
 
 	private static void selectTab(Minecraft mc, CreativeModeTab tab)
 	{
-		if(mc.screen instanceof CreativeModeInventoryScreen screen)
+		if(mc.gui.screen() instanceof CreativeModeInventoryScreen screen)
 		{
 			try
 			{
@@ -518,5 +525,12 @@ public final class DevScene
 	static Item item(String id)
 	{
 		return BuiltInRegistries.ITEM.getValue(Identifier.parse(id));
+	}
+
+	/** 26.2: the HUD is hidden through Minecraft.gui.hud, which only toggles */
+	private static void setHudHidden(net.minecraft.client.Minecraft mc, boolean hidden)
+	{
+		if(mc.gui.hud.isHidden() != hidden)
+			mc.gui.hud.toggle();
 	}
 }
