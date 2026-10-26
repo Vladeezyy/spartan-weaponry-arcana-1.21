@@ -58,20 +58,17 @@ their own mods.
   <img src="docs/images/lexicon_terra_weaponry_recipes.jpg" width="49%" alt="Recipes in the Lexica Botania">
 </p>
 
-## 📦 Installation
+## 📦 Requirements
 
 **NeoForge**
 
-1. Install **NeoForge 26.3.0.95** or newer for Minecraft **26.3**.
-2. Install **[Spartan Weaponry 3.2.1.2+26.3](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** or newer.
-3. Put `spartanweaponryarcana-neoforge-1.0.3.1+26.3.jar` from the [releases](../../releases) into `mods`.
+- **NeoForge 26.3.0.95** or newer for Minecraft **26.3**.
+- **[Spartan Weaponry 3.2.1.2+26.3](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** or newer.
 
 **Fabric**
 
-1. Install **Fabric Loader 0.19.5** or newer for Minecraft **26.3**.
-2. Install **[Spartan Weaponry 3.2.1.2+26.3](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** for
-   Fabric or newer, with what it needs (Fabric API, Forge Config API Port).
-3. Put `spartanweaponryarcana-fabric-1.0.3.1+26.3.jar` from the [releases](../../releases) into `mods`.
+- **Fabric Loader 0.19.5** or newer for Minecraft **26.3**.
+- **[Spartan Weaponry 3.2.1.2+26.3](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** for Fabric or newer, with what it needs (Fabric API, Forge Config API Port).
 
 Both: required on the client and the server. Optional: **Botania** (Manasteel, Terrasteel, Elementium, the abilities
 and the lexicon), any mod adding Thaumium, Void Metal or Dawnstone ingots, **JEI** / **EMI**.
@@ -174,21 +171,17 @@ Arcana добавляет все виды оружия Spartan Weaponry из м�
 </details>
 
 <details>
-<summary><b>📦 Установка</b></summary>
+<summary><b>📦 Требования</b></summary>
 
 **NeoForge**
 
-1. Установите **NeoForge 26.3.0.95** или новее для Minecraft **26.3**.
-2. Установите **[Spartan Weaponry 3.2.1.2+26.3](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** или
-   новее.
-3. Положите `spartanweaponryarcana-neoforge-1.0.3.1+26.3.jar` из [релизов](../../releases) в папку `mods`.
+- **NeoForge 26.3.0.95** или новее для Minecraft **26.3**.
+- **[Spartan Weaponry 3.2.1.2+26.3](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** или новее.
 
 **Fabric**
 
-1. Установите **Fabric Loader 0.19.5** или новее для Minecraft **26.3**.
-2. Установите **[Spartan Weaponry 3.2.1.2+26.3](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** для
-   Fabric или новее, с тем, что ему нужно (Fabric API, Forge Config API Port).
-3. Положите `spartanweaponryarcana-fabric-1.0.3.1+26.3.jar` из [релизов](../../releases) в папку `mods`.
+- **Fabric Loader 0.19.5** или новее для Minecraft **26.3**.
+- **[Spartan Weaponry 3.2.1.2+26.3](https://github.com/Vladeezyy/spartan-weaponry-1.21/releases)** для Fabric или новее, с тем, что ему нужно (Fabric API, Forge Config API Port).
 
 Для обоих: нужен и на клиенте, и на сервере. По желанию: **Botania** (манасталь, террасталь, элементий, способности и
 лексикон), любой мод со слитками таумиума, пустотного металла или рассветного камня, **JEI** / **EMI**.
